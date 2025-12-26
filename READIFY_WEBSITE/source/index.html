@@ -16,15 +16,50 @@
          <link rel="stylesheet" href=""/>
 
          <!-- other css -->
-         <link rel="stylesheet" href="assets/css/styles.css">
-         <link rel="stylesheet" href="assets/css/reset.css">
+         <link rel="stylesheet" href="../css/reset.css">
+         <link rel="stylesheet" href="../css/styles.css">
 
       <title>Readify Website</title>
    </head>
    <body>
+      <!-- <div class="perload" data-perload>
+         <div class="loader"></div>
+         <p class="text">Readify</p>
+      </div> -->
+
+
       <!--HEADER-->
       <header class="header" id="header">
-         
+         <div class="nav_container">
+            <div class="logo_container">
+               <img src="../assets/logo/big_logo.png" alt="logo" class="logo">
+               <a href="./index.html" class="nav_logo">Readify</a>
+            </div>
+
+            <nav class="menu_container">
+               <ul class="menu_list">
+                  <li class="nav_item"><a href="./index.html" class="nav_link active-link">Home</a></li>
+                  <li class="nav_item"><a href="../explorer.html" class="nav_link">Explorer</a></li>
+                  <li class="nav_item"><a href="../recommender.html" class="nav_link">Recommender</a></li>
+                  <li class="nav_item"><a href="../flow.html" class="nav_link">Flow</a></li>
+                  <li class="nav_item"><a href="../tracker.html" class="nav_link">Tracker</a></li>
+                  <li class="nav_item"><a href="../games.html" class="nav_link">Games</a></li>
+                  <li class="nav_item"><a href="../feedback.html" class="nav_link">Feedback</a></li>
+               </ul>
+            </nav>
+
+            <div class="button_container">
+               <!--Search button-->
+               <i class="ri-search-line" id="search_toggle"></i>
+
+               <!--Login button-->
+               <i class="ri-user-line" id="login_toggle"></i>
+
+               <!--Theme toggle button-->
+               <i class="ri-moon-line" id="theme_toggle"></i>
+            </div>
+         </div>
+
       </header>
 
       <!--SEARCH-->

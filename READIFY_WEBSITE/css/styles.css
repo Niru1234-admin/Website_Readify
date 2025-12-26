@@ -4,7 +4,7 @@
 /* Variables CSS */
 
 :root {
-    --header-height: 3.5rem;
+    --header-height: 5rem;
 
     /* Colors */
     --primary-color: #17be20;
@@ -132,7 +132,76 @@ img {
 }
 
 /* Header and Navigation */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--container-color);
+    z-index: var(--z-fixed);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 
+.nav_container {
+    max-width: 1220px;
+    margin-inline: auto;
+    padding: 1rem 1.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.logo_container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+
+.nav_logo {
+    font-size: 1.25rem;
+    font-weight: var(--font-bold);
+    color: var(--title-color);
+}
+
+.menu_list {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav_link {
+    color: var(--text-color);
+    font-weight: var(--font-medium);
+    transition: color 0.3s;
+}
+
+.nav_link:hover {
+    color: var(--primary-color);
+}
+
+.button_container {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: 1.3rem;
+    color: var(--title-color);
+}
+
+.button_container i {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.button_container i:hover {
+    color: var(--primary-color);
+}
 /* Navigation for mobile devices */
 
 /* Add shadow header */
