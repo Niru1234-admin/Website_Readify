@@ -12,6 +12,34 @@ window.addEventListener("load", () => {
 });
 
 /*HamBurger*/
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav_menu");
+  const overlay = document.querySelector(".mobile-overlay");
+  const body = document.body;
+
+  if (!hamburger || !navMenu || !overlay) return;
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    overlay.classList.toggle("active");
+    body.classList.toggle("nav_active");
+  });
+
+  overlay.addEventListener("click", closeMenu);
+
+  document.querySelectorAll(".menu_link").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+    overlay.classList.remove("active");
+    body.classList.remove("nav_active");
+  }
+});
 
 /*Header*/
 
