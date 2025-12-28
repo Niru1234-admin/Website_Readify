@@ -314,22 +314,7 @@ img {
 
 /* Hamburger Menu */
 
-.hamburger {
-  display: none;
-  cursor: pointer;
-}
 
-.hamburger.active .br:nth-child(1) {
-   transform: rotate(45deg) translate(6px, 6px);
-}
-
-.hamburger.active .br:nth-child(2) {
-   opacity: 0;
-}
-
-.hamburger.active .br:nth-child(3) {
-   transform: rotate(-45deg) translate(7px, -7px);
-}
 
 /* Login Modal */
 .login {
@@ -451,18 +436,7 @@ img {
 /* Navigation for mobile devices */
 @media screen and (max-width: 768px) {
 
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-
-}
-    .br {
-        width: 25px;
-        height: 3px;
-        background-color: var(--title-color);
-        transition: all 0.3s ease;
-    }
+    /*Hamburger menu*/
 
   .nav_menu {
     position: fixed;
