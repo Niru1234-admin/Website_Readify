@@ -13,7 +13,7 @@
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css">
 
          <!--swiper css-->
-         <!-- <link rel="stylesheet" href=""/> -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 
          <!-- other css -->
          <link rel="stylesheet" href="../css/reset.css">
@@ -49,7 +49,6 @@
             </nav>
 
             <div class="button_container">
-               <i class="ri-search-line"></i>
                <i class="ri-user-line"></i>
                <i class="ri-moon-line"></i>
             </div>
@@ -64,22 +63,97 @@
 
       </header>
 
-      <!--SEARCH-->
-      <div class="search" id="search-content">
-         
-      </div>
 
       <!--LOGIN-->
-      <div class="login grid" id="login-content">
-         
+      <div class="login" id="login-content">
+         <div class="login-overlay"></div> <!-- Background overlay -->
+         <div class="login-modal">
+            <i class="ri-close-line login-close"></i> <!-- Close icon -->
+            <h2 class="login-title">Login</h2>
+            <form class="login-form">
+               <div class="form-group">
+                  <label for="username">Email</label>
+                  <input type="text" id="username" placeholder="Enter your username or email" required>
+               </div>
+               <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" placeholder="Enter your password" required>
+               </div>
+               <button type="submit" class="login-btn">Login</button>
+               <p class="login-footer">Don't have an account? <a href="#">Sign up</a></p>
+            </form>
+         </div>
       </div>
 
+      <!--Mode toggle-->
+
       <!--MAIN -->
-      <main class="main">
-         <!--HOME-->
-         <section class="home section" id="home">
-            
-         </section>
+         <main class="main">
+            <section class="home_section" id="home">
+               <div class="home_container">
+
+               <div class="home_text">
+                  <h1 class="hometitle">
+                     Browse & <br>
+                     Select BOOKS
+                  </h1>
+
+                  <div class="quote-swiper swiper">
+                     <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                           <p class="quote-text">
+                              "A room without books is like a body without a soul." 
+                           </p>
+                           <span class="quote-author">– Marcus Tullius Cicero</span>
+                        </div>
+
+                        <div class="swiper-slide">
+                           <p class="quote-text">
+                              "Books are a uniquely portable magic." 
+                           </p>
+                           <span class="quote-author">– Stephen King</span>
+                        </div>
+
+                        <div class="swiper-slide">
+                           <p class="quote-text">
+                              "So many books, so little time." 
+                           </p>
+                           <span class="quote-author">– Frank Zappa</span>
+                        </div>
+                     </div>
+                  </div>
+
+                  <a href="#featured" class="explore_button">Explore Now</a>
+               </div>
+
+               <div class="home_images">
+                  <div class="book-swiper swiper">
+                     <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                           <img src="../assets/images/book-1.png" alt="image1" class="home_img">
+                        </div>
+
+                        <div class="swiper-slide">
+                           <img src="../assets/images/book-2.png" alt="image2" class="home_img">
+                        </div>
+
+                        <div class="swiper-slide">
+                           <img src="../assets/images/book-3.png" alt="image3" class="home_img">
+                        </div>
+
+                        <div class="swiper-slide">
+                           <img src="../assets/images/book-4.png" alt="image4" class="home_img">
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+
+               </div>
+            </section>
+         </main>
 
          <!--==================== SERVICES ====================-->
          <section class="services section">
@@ -123,10 +197,14 @@
       <!--=============== SCROLLREVEAL ===============-->
       <!-- <script src=""></script> -->
 
-      <!--=============== SWIPER JS ===============-->
-      <!-- <script src=""></script> -->
+      <!--Swiper JS-->
+      <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
-      <!--=============== MAIN JS =============== -->
+
+      <!--Main JS-->
       <script src="../javascript/pages/main.js"></script>
+
+      <!--Page Features JS-->
+      <script src="../javascript/pages/script.js"></script>
    </body>
 </html>

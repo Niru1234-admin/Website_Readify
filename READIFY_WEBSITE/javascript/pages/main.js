@@ -1,3 +1,4 @@
+/*Preloader*/
 window.addEventListener("load", () => {
     const preload = document.querySelector(".preload");
 
@@ -10,6 +11,7 @@ window.addEventListener("load", () => {
     }, LOADER_DURATION);
 });
 
+/*HamBurger*/
 document.addEventListener('DOMContentLoaded', () => {
    const hamburger = document.querySelector('.hamburger');
    const navMenu = document.querySelector('.nav_menu');
@@ -40,3 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
    });
 });
 
+/*Header*/
+
+const header = document.querySelector(".header");
+
+window.addEventListener("scroll", () => {
+  header.classList.toggle("active", window.scrollY > 20);
+});
