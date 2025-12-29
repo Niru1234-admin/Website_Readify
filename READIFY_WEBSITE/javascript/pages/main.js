@@ -48,3 +48,36 @@ const header = document.querySelector(".header");
 window.addEventListener("scroll", () => {
   header.classList.toggle("active", window.scrollY > 20);
 });
+
+new Swiper('.quote-swiper', {
+  loop: true,
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: false,
+  },
+  autoHeight: true,   
+  effect: 'fade',
+  fadeEffect: {
+    crossFade: true,
+  },
+});
+
+/* Initialize Book Swiper */
+new Swiper(".book_swiper", {
+  centeredSlides: "auto",
+  slidesPerView: "auto",
+  grabCursor: true,
+  spaceBetween: -25,
+  loop: true,
+
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+
+  breakpoints: {
+    1220: {
+      spaceBetween: -32,
+    },
+  },
+});

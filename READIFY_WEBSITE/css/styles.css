@@ -235,10 +235,11 @@ img {
   width: 100%;
   background-color: var(--container-color);
   backdrop-filter: blur(10px);
-  z-index: 4;
+  z-index: 100;
   padding-block: 10px;
   transition: var(--transition1);
 }
+
 .header.active{
     box-shadow: var(--basic_shadow);
 }
@@ -255,15 +256,15 @@ img {
 .nav_logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  column-gap: 0.5rem;
   font-family: var(--title-font);
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--title-color);
 }
 
 .logo {
-  width: 40px;
+  width: 50px;
 }
 
 .logo_text {
@@ -275,6 +276,7 @@ img {
     display: flex;
     justify-content: center;
 }
+
 .menu_list {
   display: flex;
   align-items: center;
@@ -341,7 +343,7 @@ img {
     max-width: 420px;
     background-color: var(--container-color);
     padding: 2rem;
-    border-radius: 0 0 12px 12px;
+    border-radius: 12px 12px 12px 12px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s cubic-bezier(0.33, 0.85, 0.4, 0.96);
 }
@@ -351,11 +353,12 @@ img {
 }
 
 .login.active .login-overlay {
-   opacity: 1;
+   opacity: 0.7;
+   background-color: #fff1f1;
 }
 
 .login.active .login-modal {
-   transform: translate(-50%, 0);
+   transform: translate(-50%, 50%);
 }
 
 .login-close {
@@ -526,32 +529,46 @@ img {
 .home_section {
     padding-top: calc(var(--header-height) + 3rem);
     background-color: var(--light-color);
+    min-height: calc(100vh - var(--header-height)); 
+    display: flex;
+    align-items: center
 }
 
 .home_container {
-    max-width: 1220px;
-    margin-inline: auto;
-    padding: 2rem 1.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
     gap: 3rem;
+    align-items: center;   
+    margin-inline: auto;   
+    padding: 5rem 0.5rem;
 }
 
 .home_text {
     max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start;
 }
 
 .hometitle {
     font-family: var(--title-font);
     font-size: var(--max-font-size);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: var(--title-color);
+    line-height: 1.05;
 }
 
 .quote-swiper {
-    height: 100px;
-    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 520px;
+    min-height: 120px; 
+}
+
+.quote-swiper .swiper-slide{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .quote-text {
@@ -576,6 +593,7 @@ img {
     border-radius: var(--radius50);
     font-weight: 500;
     transition: var(--transition);
+    margin-top: 1rem;
 }
 
 .explore_button:hover {
@@ -583,30 +601,87 @@ img {
     transform: translateY(-2px);
 }
 
-.book-swiper {
-    width: 100%;
-    padding: 2rem 0;
+.book_swiper {
+  margin: initial;
 }
 
-.book-swiper .swiper-slide {
-    width: auto;
-    display: flex;
-    justify-content: center;
+.home_images {
+  display: grid;
 }
 
+.article,
 .home_img {
-    width: 200px;
-    cursor: grab;
-    border-radius: var(--radius10);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    transition: transform 0.4s ease;
+  width: 220px;
+  transition: scale 0.4s;
+}
+.article {
+  scale: 0.8;
 }
 
-.home_img:active {
-    cursor: grabbing;
+.swiper-slide-active,
+.swiper-slide-duplicate-active {
+  scale: 1;
 }
 
-.book-swiper .swiper-slide-active img {
-    transform: scale(1.08);
+
+@media screen and (max-width: 768px) {
+    .home_container {
+        grid-template-columns: 1fr; /* Stack text on top of images */
+        text-align: justify;
+        row-gap: 2rem;
+        padding-top: 1rem;
+    }
+
+    .home_text {
+        margin-inline: auto; /* Center the text block */
+    }
+
+    .hometitle {
+        font-size: var(--h1-font-size); /* Use the responsive H1 size */
+        line-height: 1.2;
+    }
+
+    /* Adjust Quote Swiper */
+    .quote-swiper {
+        height: auto; /* Allow text to wrap naturally */
+        margin-bottom: 1.5rem;
+    }
+
+    .quote-text {
+        font-size: var(--small-font-size);
+    }
+
+    /* Adjust Book Swiper */
+    .home_images{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .book-swiper {
+        width: 100%;
+    }
+
+    .book-swiper .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+    }
+
+    /* .home_img {
+        width: 350px; /* Smaller books for mobile */
+    
 }
 
+/* Extra small devices (phones under 350px) */
+@media screen and (max-width: 350px) {
+    .home_img {
+        width: 120px;
+    }
+    
+    .hometitle {
+        font-size: 1.25rem;
+    }
+}
