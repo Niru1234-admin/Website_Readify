@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+         <!--favicon-->
+         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+         <!--remix icons-->
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css">
+
+         <!--swiper css-->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+
+         <!-- other css -->
+         <link rel="stylesheet" href="../css/reset.css">
+         <link rel="stylesheet" href="../css/styles.css">
+
+      <title>Readify Website</title>
+   </head>
+   <body>
+
+      <!-- HEADER-->
+      <header class="header">
+         <div class="nav_container">
+            <a href="../source/index.html" class="nav_logo">
+            <img src="../assets/logo/big_logo.png" alt="logo" class="logo">
+            <span class="logo_text">Readify</span>
+            </a>
+
+            <nav class="nav_menu">
+               <ul class="menu_list">
+                  <li class="nav_item"><a href="../source/index.html" class="menu_link">Home</a></li>
+                  <li class="nav_item"><a href="../pages/explorer.html" class="menu_link">Explorer</a></li>
+                  <li class="nav_item"><a href="../pages/recommender.html" class="menu_link">Recommender</a></li>
+                  <li class="nav_item"><a href="../pages/flow.html" class="menu_link">Flow</a></li>
+                  <li class="nav_item"><a href="../pages/tracker.html" class="menu_link">Tracker</a></li>
+                  <li class="nav_item"><a href="../pages/games.html" class="menu_link">Games</a></li>
+                  <li class="nav_item"><a href="../pages/feedback.html" class="menu_link">Feedback</a></li>
+               </ul>
+            </nav>
+
+            <div class="mobile-overlay"></div>
+
+            <div class="button_container">
+               <i class="ri-user-line"></i>
+               <i class="ri-moon-line"></i>
+            </div>
+
+            
+            <div class="hamburger">
+                  <span class="br"></span>
+                  <span class="br"></span>
+                  <span class="br"></span>
+            </div>
+         </div>
+
+      </header>
+
+
+      <!--LOGIN-->
+      <div class="login" id="login-content">
+         <div class="login-overlay"></div> <!-- Background overlay -->
+         <div class="login-modal">
+            <i class="ri-close-line login-close"></i> <!-- Close icon -->
+            <h2 class="login-title">Login</h2>
+            <form class="login-form">
+               <div class="form-group">
+                  <label for="username">Email</label>
+                  <input type="text" id="username" placeholder="Enter your username or email" required>
+               </div>
+               <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" placeholder="Enter your password" required>
+               </div>
+               <button type="submit" class="login-btn">Login</button>
+               <p class="login-footer">Don't have an account? <a href="#">Sign up</a></p>
+            </form>
+         </div>
+      </div>
+<body>
+    
+         <script src="../javascript/pages/script.js"></script>
+</body>
+</html>
+
