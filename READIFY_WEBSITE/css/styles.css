@@ -880,8 +880,6 @@ img {
     margin-bottom: 10px;
     text-align: center;
 }
-
-
 /*Dont forget to add code for mobile responsivenes*/
 
 
@@ -1005,7 +1003,32 @@ img {
 .swiper-button-next:hover i {
   color: var(--secondary-color);
 }
+/*Dont forget to add code for mobile responsivenes*/
 
+/*Footer*/
+.footer{
+  background-color: lightgreen;
+  color: white;
+  padding-top: 4rem;c
+  font-family: var(--body-font);
+}
 
+.footer_container{
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 3rem;
+}
+
+.footer_column h3{
+  color: rgb(252, 255, 248);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-family: var(--title-font);
+}
+
+.
 
 
