@@ -81,3 +81,23 @@ new Swiper(".book_swiper", {
     },
   },
 });
+
+/*Featured Swiper */
+let swiperFeatured = new Swiper(".featured_swiper", {
+  loop: true,
+  spaceBetween: 20,
+  grabCursor: true,
+  slidesPerView: "auto",
+  centeredSlides: "auto",
+  speed: 600,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    1150: {
+      slidesPerView: 3,
+      centeredSlides: false,
+    },
+  },
+});

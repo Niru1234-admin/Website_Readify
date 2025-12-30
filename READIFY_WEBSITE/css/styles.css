@@ -791,7 +791,6 @@ img {
   max-width: 600px; 
 }
 
-/* Media query to maintain side-by-side on smaller screens */
 @media (max-width: 768px) {
   .author_card {
     width: 100%;
@@ -881,3 +880,132 @@ img {
     margin-bottom: 10px;
     text-align: center;
 }
+
+
+/*Dont forget to add code for mobile responsivenes*/
+
+
+/*Featured Books*/
+.featured_container {
+  padding: 2rem;
+}
+
+
+
+.featured_card{
+  position: relative;
+  height:350px;
+  text-align: center;
+  background-color: var(--container-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.section_title{
+  margin-top: 2rem;
+}
+
+.featured_card:hover {
+  box-shadow: var(--deep_shadow);
+}
+
+
+.featured_image{
+  width: 150px;
+  margin: 0 auto 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.featured_card:hover .featured_image {
+  transform: scale(1.04);
+}
+
+.f_title{
+  font-size: var(--h2-font-size);
+  margin-top: 0.5rem;
+}
+
+.featured_price{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  column-gap: 0.75rem;
+}
+
+.discount{
+  color: var(--title-color)
+}
+
+.price{
+  font-size: 0.75rem;
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+
+.f_actions{
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  top: 1rem;
+  right: -3rem;
+  display: flex;
+  gap: 0.5rem;
+  transition: right 0.3s ease;
+}
+
+.f_actions button{
+  background: none;
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  transition: color 0.4s;
+  cursor: pointer;
+}
+
+.swiper-slide-active .featured_card {
+  border: 1px solid var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.featured_card:hover .f_actions{
+  right: 1.5rem
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after{
+  content: "";
+}
+
+.swiper-button-prev,
+.swiper-button-next{
+  width: initial;
+  height: initial;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  transition: border 0.4s, background-color 0.4s;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  content: "";   
+}
+
+.swiper-button-prev i,
+.swiper-button-next i {
+  font-size: 2rem;       
+  color: var(--primary-color);
+}
+
+.swiper-button-prev:hover i,
+.swiper-button-next:hover i {
+  color: var(--secondary-color);
+}
+
+
+
+
