@@ -29,11 +29,11 @@
       <header class="header">
          <div class="nav_container">
             <a href="../source/index.html" class="nav_logo">
-            <img src="../assets/logo/big_logo.png" alt="logo" class="logo">
-            <span class="logo_text">Readify</span>
+               <img src="../assets/logo/big_logo.png" alt="logo" class="logo">
+               <span class="logo_text">Readify</span>
             </a>
 
-            <nav class="nav_menu">
+            <nav class="nav_menu" id="nav_menu">
                <ul class="menu_list">
                   <li class="nav_item"><a href="../source/index.html" class="menu_link">Home</a></li>
                   <li class="nav_item"><a href="../pages/explorer.html" class="menu_link">Explorer</a></li>
@@ -45,41 +45,40 @@
                </ul>
             </nav>
 
-            <div class="mobile-overlay"></div>
-
-            <div class="button_container">
+            <div class="nav_icons">
                <i class="ri-user-line"></i>
                <i class="ri-moon-line"></i>
             </div>
 
             
-            <div class="hamburger">
+            <button class="hamburger" id="hamburger">
                   <span class="br"></span>
                   <span class="br"></span>
                   <span class="br"></span>
-            </div>
+            </button>
          </div>
 
+         <div class="mobile_overlay" id="mobile_overlay"></div>
       </header>
 
 
       <!--LOGIN-->
-      <div class="login" id="login-content">
-         <div class="login-overlay"></div> <!-- Background overlay -->
-         <div class="login-modal">
+      <div class="login" id="login_content">
+         <div class="login_overlay"></div> <!-- Background overlay -->
+         <div class="login_modal">
             <i class="ri-close-line login-close"></i> <!-- Close icon -->
-            <h2 class="login-title">Login</h2>
-            <form class="login-form">
-               <div class="form-group">
+            <h2 class="login_title">Login</h2>
+            <form class="login_form">
+               <div class="form_group">
                   <label for="username">Email</label>
                   <input type="text" id="username" placeholder="Enter your username or email" required>
                </div>
-               <div class="form-group">
+               <div class="form_group">
                   <label for="password">Password</label>
                   <input type="password" id="password" placeholder="Enter your password" required>
                </div>
-               <button type="submit" class="login-btn">Login</button>
-               <p class="login-footer">Don't have an account? <a href="#">Sign up</a></p>
+               <button type="submit" class="login_btn">Login</button>
+               <p class="login_footer">Don't have an account? <a href="#">Sign up</a></p>
             </form>
          </div>
       </div>
@@ -101,24 +100,24 @@
                      <div class="swiper-wrapper">
 
                         <div class="swiper-slide">
-                           <p class="quote-text">
+                           <p class="quote_text">
                               "A room without books is like a body without a soul." 
                            </p>
-                           <span class="quote-author">– Marcus Tullius Cicero</span>
+                           <span class="quote_author">– Marcus Tullius Cicero</span>
                         </div>
 
                         <div class="swiper-slide">
-                           <p class="quote-text">
+                           <p class="quote_text">
                               "Books are a uniquely portable magic." 
                            </p>
-                           <span class="quote-author">– Stephen King</span>
+                           <span class="quote_author">– Stephen King</span>
                         </div>
 
                         <div class="swiper-slide">
-                           <p class="quote-text">
+                           <p class="quote_text">
                               "So many books, so little time." 
                            </p>
-                           <span class="quote-author">– Frank Zappa</span>
+                           <span class="quote_author">– Frank Zappa</span>
                         </div>
                      </div>
                   </div>
@@ -341,7 +340,7 @@
 
                   <form class="newsletter_form">
                      <input type="email" placeholder="Enter email" required>
-                     <button type="subscribe">Subscribe Now</button>
+                     <button type="submit">Subscribe Now</button>
                   </form>
                </div>
 
