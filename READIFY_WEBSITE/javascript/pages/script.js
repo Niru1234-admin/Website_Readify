@@ -1,10 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
    const userIcon = document.querySelector('.ri-user-line');
-   const loginModal = document.getElementById('login-content');
+   const loginModal = document.getElementById('login_content');
    const loginClose = document.querySelector('.login-close');
-   const loginOverlay = document.querySelector('.login-overlay');
-   const loginForm = document.querySelector('.login-form');
+   const loginOverlay = document.querySelector('.login_overlay');
+   const loginForm = document.querySelector('.login_form');
 
    // Show modal on user icon click
    userIcon.addEventListener('click', () => {
@@ -42,33 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-const quoteSwiper = new Swiper(".quote-swiper", {
-  loop: true,
-  effect: "fade",
-  fadeEffect: {
-    crossFade: true,
-  },
-  autoplay: {
-    delay: 3500,
-    disableOnInteraction: false,
-  },
-  speed: 800,
-  allowTouchMove: false,
-});
-
-const bookSwiper = new Swiper(".book-swiper", {
-  loop: true,
-  grabCursor: true,
-  centeredSlides: true,
-  slidesPerView: "auto",
-  spaceBetween: 30,
-
-  autoplay: {
-    delay: 2800,
-    disableOnInteraction: false,
-  },
-
-  speed: 900,
-});
+// Swiper instances are initialized in `main.js` to avoid duplicate inits and
+// potential selector mismatches. Keep this file focused on UI helpers.
 
 

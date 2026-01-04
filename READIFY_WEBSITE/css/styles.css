@@ -255,13 +255,13 @@ img {
   align-items: center;
   column-gap: 0.5rem;
   font-family: var(--title-font);
-  font-size: var(--h3-font-size);
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--title-color);
 }
 
 .logo {
-  width: 50px;
+  width: 64px;
 }
 
 .logo_text {
@@ -510,7 +510,7 @@ img {
 
 .hometitle {
     font-family: var(--title-font);
-    font-size: v1.5rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--title-color);
     line-height: 1.05;
@@ -527,7 +527,7 @@ img {
     justify-content: center;
 }
 
-.quot_-text {
+.quote_text {
     font-size: 1rem;
     font-style: italic;
     line-height: 1.5;
@@ -621,7 +621,7 @@ img {
 .author_content {
   display: flex;
   align-items: center; 
-  gap: 20pxpx; 
+  gap: 20px; 
   flex-wrap: wrap; 
   background: #cbe8c3; 
   padding: 15px; 
@@ -836,6 +836,7 @@ img {
   color: white;
   padding-top: 3rem;
   font-family: var(--body-font);
+  text-align: center;
 }
 
 .footer_container{
@@ -843,6 +844,8 @@ img {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer_column h3{
@@ -919,8 +922,9 @@ img {
   background-color: #1b3f31;
   padding: 1rem 1.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .copyright p {
@@ -939,18 +943,18 @@ img {
     }
 
     .logo {
-        width: 50px;
+    width: 64px;
     }
 
     .hometitle {
         font-size: 2rem;
     }
 
-    .quote-text {
+    .quote_text {
         font-size: 1.1rem;
     }
 
-    .quote-author {
+    .quote_author {
         font-size: 0.9rem;
     }
 
@@ -1001,28 +1005,47 @@ img {
 
 /* For desktops (769px and up) */
 @media screen and (min-width: 769px) {
-    .container {
-        max-width: 1220px;
-    }
+  .container {
+      max-width: 1220px;
+  }
 
-    .nav_container {
-        padding: 1rem 1.5rem;
-    }
+  .nav_container {
+    max-width: 1220px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 1rem 1.5rem;
+  }
 
-    .nav_menu {
-        position: static;
-        width: auto;
-        height: auto;
-        background: none;
-        padding-top: 0;
-        flex: 1;
-        display: flex;
-        justify-content: center;
-    }
+  .nav_logo {
+    justify-self: start;
+    margin-left: 0.75rem;
+    font-size: 1.35rem;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  .nav_menu {
+      position: static;
+      justify-self: center;
+      width: auto;
+      height: auto;
+      background: none;
+      padding-top: 0;
+      flex: 1;
+      display: flex;
+  }
 
     .menu_list {
-        flex-direction: row;
-        gap: 2rem;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
 
     .nav_item {
@@ -1068,13 +1091,36 @@ img {
         min-height: 120px;
     }
 
-    .quote-text {
+    .quote_text {
         font-size: 1.1rem;
     }
 
-    .quote-author {
+    .quote_author {
         font-size: 0.9rem;
     }
+
+    .home_images {
+        width: 100%;
+        min-width: 0; /* Critical for Swiper inside Grid */
+        overflow: hidden; /* Ensures slides don't bleed out */
+    }
+
+      .book_swiper .swiper-slide {
+        display: flex;
+        justify-content: center;
+  }
+
+      .book_swiper .home_img {
+        width: 220px;
+        transform: scale(0.85);
+        opacity: 0.6;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+      .book_swiper .swiper-slide-active .home_img {
+        transform: scale(1);
+        opacity: 1;
+  }
 
     .article,
     .home_img {
@@ -1163,9 +1209,14 @@ img {
     }
 
     .footer_container {
+        display: grid;
+        max-width: 1220px;
+        margin: 0 auto;
+        text-align: left;
+        align-items: start;
         grid-template-columns: repeat(4, 1fr);
         gap: 3rem;
-        display: grid;
+
     }
 
     .footer_column h3 {

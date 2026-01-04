@@ -63,11 +63,11 @@ new Swiper('.quote-swiper', {
 });
 
 /* Initialize Book Swiper */
-new Swiper(".book_swiper", {
-  centeredSlides: "auto",
-  slidesPerView: "auto",
+const bookSwiper = new Swiper(".book_swiper", {
+  centeredSlides: true,
+  slidesPerView: 3,
   grabCursor: true,
-  spaceBetween: -25,
+  spaceBetween: 20,
   loop: true,
 
   autoplay: {
@@ -76,14 +76,15 @@ new Swiper(".book_swiper", {
   },
 
   breakpoints: {
-    1220: {
-      spaceBetween: -32,
+    769: {
+      spaceBetween: 40,
+      slidesPerView: 3,
     },
   },
 });
 
 /*Featured Swiper */
-let swiperFeatured = new Swiper(".featured_swiper", {
+const swiperFeatured = new Swiper(".featured_swiper", {
   loop: true,
   spaceBetween: 20,
   grabCursor: true,
