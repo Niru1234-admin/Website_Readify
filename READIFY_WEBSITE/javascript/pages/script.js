@@ -2,14 +2,19 @@
 document.addEventListener('DOMContentLoaded', () => {
    const userIcon = document.querySelector('.ri-user-line');
    const loginModal = document.getElementById('login_content');
-   const loginClose = document.querySelector('.login-close');
+   const loginClose = document.querySelector('.login_close');
    const loginOverlay = document.querySelector('.login_overlay');
    const loginForm = document.querySelector('.login_form');
+
+   // Guard clause - exit if required elements don't exist
+   if (!userIcon || !loginModal || !loginClose || !loginOverlay || !loginForm) {
+      return;
+   }
 
    // Show modal on user icon click
    userIcon.addEventListener('click', () => {
       loginModal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Lock scroll (using your existing class)
+      document.body.style.overflow = 'hidden';
    });
 
    // Close modal on close icon click
@@ -25,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
    });
 
-   // Handle form submission (placeholder—add real logic here)
+   // Handle form submission
    loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       alert('Login submitted! (Add real authentication here)');
@@ -34,11 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
    function closeModal() {
       loginModal.classList.remove('active');
-      document.body.style.overflow = "";
-;
-
+      document.body.style.overflow = '';
    }
-
 });
 
 

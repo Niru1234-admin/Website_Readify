@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav_menu");
-  const overlay = document.querySelector(".mobile-overlay");
+  const overlay = document.querySelector(".mobile_overlay");
   const body = document.body;
 
   if (!hamburger || !navMenu || !overlay) return;
