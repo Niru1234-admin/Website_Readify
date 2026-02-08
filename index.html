@@ -5,7 +5,11 @@
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
          <!--favicon-->
-         <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/mini_logo.png">
+         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+         <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+         <link rel="manifest" href="manifest.json">
+
          <!--remix icons-->
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css">
 
@@ -131,35 +135,51 @@
                      <div class="swiper-wrapper">
 
                         <div class="article swiper-slide">
-                           <img src="assets/images/book-1.png" alt="image1" class="home_img">
+                           <img src="assets/books/book1.jpg" alt="image1" class="home_img">
                         </div>
 
                         <div class="article swiper-slide">
-                           <img src="assets/images/book-2.png" alt="image2" class="home_img">
+                           <img src="assets/books/book2.jpg" alt="image2" class="home_img">
                         </div>
 
                         <div class="article swiper-slide">
-                           <img src="assets/images/book-3.png" alt="image3" class="home_img">
+                           <img src="assets/books/book3.jpg" alt="image3" class="home_img">
                         </div>
 
                         <div class="article swiper-slide">
-                           <img src="assets/images/book-4.png" alt="image4" class="home_img">
+                           <img src="assets/books/book4.jpg" alt="image4" class="home_img">
                         </div>
 
                         <div class="article swiper-slide">
-                           <img src="assets/images/book-1.png" alt="image5" class="home_img">
+                           <img src="assets/books/book5.jpg" alt="image5" class="home_img">
                         </div>
 
                         <div class="article swiper-slide">
-                           <img src="assets/images/book-2.png" alt="image6" class="home_img">
+                           <img src="assets/books/book6.jpg" alt="image6" class="home_img">
                         </div>
 
                         <div class="article swiper-slide">
-                           <img src="assets/images/book-3.png" alt="image7" class="home_img">
+                           <img src="assets/books/book7.jpg" alt="image7" class="home_img">
                         </div>
 
                         <div class="article swiper-slide">
-                           <img src="assets/images/book-4.png" alt="image8" class="home_img">
+                           <img src="assets/books/book8.jpg" alt="image8" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/books/book9.jpg" alt="image9" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/books/book10.jpg" alt="image10" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/books/book11.jpg" alt="image11" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/books/book12.jpg" alt="image12" class="home_img">
                         </div>
                         </div>
                      </div>
@@ -176,14 +196,13 @@
 
                   <div class="author_content">
                      <div class="author_avatar" id="authorAvatar">
-                        <img src="assets/images/author1.jpg" alt="author_image">
+                        <img id="authorImg" src="assets/author/author1.jpg" alt="author_image">
                      </div>
                      <div class="author_text">
-                        <h3>J.K. Rowling</h3>
-                        <p>
-                           Discover a smarter, simpler way to enjoy the stories you love.
-                           Readify brings together captivating books, personalized
-                           recommendations, and an effortless reading experience—all in one place.
+                        <h3 id="authorName">J.K. Rowling</h3>
+                        <p id="authorBio">
+                           Creator of Harry Potter. Known for magical world-building, 
+                           friendships, and adventure stories.
                         </p>
                      </div>
                   </div>
@@ -244,7 +263,7 @@
                      <div class="swiper-wrapper">
 
                         <article class="featured_card swiper-slide">
-                           <img src="assets/images/book-1.png" class="featured_image" alt="book1">
+                           <img src="assets/books/book1.jpg" class="featured_image" alt="book1">
                            <h2 class="f_title">Featured Book</h2>
                            <div class="featured_price">
                               <span class="discount">Free</span>
@@ -263,7 +282,7 @@
                         </article>
 
                         <article class="featured_card swiper-slide">
-                           <img src="assets/images/book-2.png" class="featured_image" alt="book1">
+                           <img src="assets/books/book2.jpg" class="featured_image" alt="book2">
                            <h2 class="f_title">Featured Book</h2>
                            <div class="featured_price">
                               <span class="discount">Free</span>
@@ -282,7 +301,7 @@
                         </article>
 
                         <article class="featured_card swiper-slide">
-                           <img src="assets/images/book-3.png" class="featured_image" alt="book1">
+                           <img src="assets/books/book3.jpg" class="featured_image" alt="book3">
                            <h2 class="f_title">Featured Book</h2>
                            <div class="featured_price">
                               <span class="discount">Free</span>
@@ -301,7 +320,7 @@
                         </article>
 
                         <article class="featured_card swiper-slide">
-                           <img src="assets/images/book-4.png" class="featured_image" alt="book1">
+                           <img src="assets/books/book4.jpg" class="featured_image" alt="book4">
                            <h2 class="f_title">Featured Book</h2>
                            <div class="featured_price">
                               <span class="discount">Free</span>
@@ -318,6 +337,159 @@
                               </button>
                            </div>
                         </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/books/book5.jpg" class="featured_image" alt="book5">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/books/book6.jpg" class="featured_image" alt="book6">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/books/book7.jpg" class="featured_image" alt="book7">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/books/book8.jpg" class="featured_image" alt="book8">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/books/book9.jpg" class="featured_image" alt="book9">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/books/book10.jpg" class="featured_image" alt="book10">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/books/book11.jpg" class="featured_image" alt="book11">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/books/book12.jpg" class="featured_image" alt="book12">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
                      </div>
 
                      <div class="swiper-button-prev">
@@ -396,11 +568,10 @@
       <!--Swiper JS-->
       <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
-
       <!--Main JS-->
-      <script src="javascript/pages/main.js"></script>
+      <script src="javascript/main.js"></script>
 
-      <!--Script JS-->
-      <script src="javascript/pages/script.js"></script>
+      <script src="javascript/script.js"></script>
+
    </body>
 </html>
