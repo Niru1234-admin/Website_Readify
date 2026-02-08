@@ -1,4 +1,4 @@
-const CACHE_NAME = "readify-v1.0.4";
+const CACHE_NAME = "readify-v1.0.5";
 
 /* Core app shell files */
 const CORE_ASSETS = [
@@ -54,7 +54,7 @@ const IMAGES = [
   "./assets/author/author3.jpg",
   "./assets/author/author4.jpg",
   "./assets/author/author5.jpg",
-  "./assets/logo/big_logo.png"
+  "./assets/logo/big_logo.webp"
 ];
 
 const ASSETS_TO_CACHE = [...CORE_ASSETS, ...JS_FILES, ...IMAGES];
