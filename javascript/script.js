@@ -1,4 +1,5 @@
 
+// Controls login modal open/close behavior and form submission.
 document.addEventListener('DOMContentLoaded', () => {
    const userIcon = document.querySelector('.ri-user-line');
    const loginModal = document.getElementById('login_content');
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal();
    });
 
+   // Hides the login dialog and restores page scrolling.
    function closeModal() {
       loginModal.classList.remove('active');
       document.body.style.overflow = '';
@@ -41,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 (() => {
   "use strict";
 
+  // Normalized event binding helper for single elements and collections.
   const addEvent = (elem, type, callback) => {
     if (!elem || !type || !callback) return;
     if (typeof addEventOnElem === "function") {
@@ -62,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     elem.addEventListener(type, callback);
   };
 
+  // Adds smooth scrolling for on-page anchor links.
   const initSmoothScroll = () => {
     const anchors = document.querySelectorAll('a[href^="#"]');
     if (!anchors || anchors.length === 0) return;
@@ -71,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.querySelector(".nav_menu");
     const overlay = document.querySelector(".mobile_overlay");
 
+    // Closes mobile nav when a section link is used.
     const closeNav = () => {
       if (!hamburger || !navMenu || !overlay) return;
       hamburger.classList.remove("active");
@@ -79,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.remove("nav_active");
     };
 
+    // Scroll to target while accounting for fixed header height.
     const onAnchorClick = (e) => {
       const link = e.currentTarget;
       const href = link?.getAttribute("href");
@@ -107,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addEvent(anchors, "click", onAnchorClick);
   };
 
+  // Start once DOM is ready.
   if (document.readyState === "loading") {
     addEvent(document, "DOMContentLoaded", initSmoothScroll);
   } else {
@@ -130,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ".faq_item"
   ].join(", ");
 
+  // Exclude overlays/modals from reveal animation rules.
   const excludedSelector = [
     ".header",
     ".nav_menu",
@@ -142,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "#book_modal"
   ].join(", ");
 
+  // Shared event helper used for reveal listeners.
   const addEvent = (elem, type, callback) => {
     if (!elem || !type || !callback) return;
     if (typeof addEventOnElem === "function") {
@@ -163,8 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
     elem.addEventListener(type, callback);
   };
 
+  // Skip animation for elements inside excluded containers.
   const shouldSkip = (el) => el?.closest(excludedSelector);
 
+  // Adds .active to elements once they enter the viewport.
   const reveal = () => {
     const items = document.querySelectorAll(selector);
     if (!items || items.length === 0) return;
@@ -179,6 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // Throttle scroll work with requestAnimationFrame.
   let ticking = false;
   const onScroll = () => {
     if (ticking) return;
@@ -189,11 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // Initial reveal pass and scroll listener binding.
   const initReveal = () => {
     reveal();
     addEvent(window, "scroll", onScroll);
   };
 
+  // Start once DOM is ready.
   if (document.readyState === "loading") {
     addEvent(document, "DOMContentLoaded", initReveal);
   } else {

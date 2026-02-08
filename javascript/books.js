@@ -1,3 +1,4 @@
+// Shared book dataset used across explorer, recommender, and tracker views.
 window.BOOKS_DATA = [
   {
     id: 1,

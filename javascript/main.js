@@ -1,4 +1,5 @@
 /*Preloader*/
+// Shows loader briefly, then marks app as ready.
 window.addEventListener("load", () => {
   const preload = document.querySelector(".preload");
   const LOADER_DURATION = 3000;
@@ -12,6 +13,7 @@ window.addEventListener("load", () => {
 });
 
 /*HamBurger*/
+// Handles mobile navigation open/close interactions.
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav_menu");
@@ -33,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", closeMenu);
   });
 
+  // Closes the mobile menu and overlay.
   function closeMenu() {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
@@ -42,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const currentPath = window.location.pathname.split("/").pop();
 
+  // Marks the current page link as active in the menu.
   document.querySelectorAll(".menu_link").forEach(link => {
     const linkPath = link.getAttribute("href")?.split("/").pop();
 
@@ -60,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const header = document.querySelector(".header");
 
 if (header) {
+  // Adds sticky style once the page is scrolled.
   window.addEventListener("scroll", () => {
     header.classList.toggle("active", window.scrollY > 20);
   });
@@ -67,6 +72,7 @@ if (header) {
 
 const quoteSwiperEl = document.querySelector(".quote-swiper");
 if (quoteSwiperEl && typeof Swiper !== "undefined") {
+  // Rotating quote slider.
   new Swiper('.quote-swiper', {
     loop: true,
     autoplay: {
@@ -84,6 +90,7 @@ if (quoteSwiperEl && typeof Swiper !== "undefined") {
 /* Initialize Book Swiper */
 const bookSwiperEl = document.querySelector(".book_swiper");
 if (bookSwiperEl && typeof Swiper !== "undefined") {
+  // Carousel for book cards.
   const bookSwiper = new Swiper(".book_swiper", {
     centeredSlides: true,
     slidesPerView: 3,
@@ -108,6 +115,7 @@ if (bookSwiperEl && typeof Swiper !== "undefined") {
 /*Featured Swiper */
 const featuredSwiperEl = document.querySelector(".featured_swiper");
 if (featuredSwiperEl && typeof Swiper !== "undefined") {
+  // Featured section slider with nav controls.
   const swiperFeatured = new Swiper(".featured_swiper", {
     loop: true,
     spaceBetween: 20,

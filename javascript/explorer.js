@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!booksContainer || !categoryFilter || !authorFilter || !searchInput || !bookModal) return;
 
+  // Creates a normalized key for searching/filter matching.
   function toKey(value) {
     return (value ?? "")
       .toString()
@@ -31,10 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .trim();
   }
 
+  // Initial page setup.
   initializeFilters();
   renderBooks(books);
   setupEventListeners();
 
+  // Builds category and author dropdown options from book data.
   function initializeFilters() {
     const uniqueCategories = [...new Set(books.map((b) => toKey(b.category)).filter(Boolean))].sort();
     const uniqueAuthors = [...new Set(books.map((b) => toKey(b.author)).filter(Boolean))].sort();
@@ -62,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  // Replaces all options in a select element.
   function rebuildSelect(selectEl, options) {
     selectEl.innerHTML = "";
 
@@ -78,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Converts normalized keys back to title-case labels.
   function formatLabel(key) {
     if (!key) return "";
     return key
@@ -86,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .join(" ");
   }
 
+  // Renders book cards to the grid container.
   function renderBooks(bookList) {
     booksContainer.innerHTML = "";
 
@@ -111,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Opens and fills the modal with selected book details.
   function openBookModal(book) {
     if (!book) return;
 
@@ -168,11 +175,13 @@ document.addEventListener("DOMContentLoaded", () => {
     bookModal.setAttribute("aria-hidden", "false");
   }
 
+  // Closes the book details modal.
   function closeBookModal() {
     bookModal.style.display = "none";
     bookModal.setAttribute("aria-hidden", "true");
   }
 
+  // Applies selected filters and text search to the books list.
   function filterBooks() {
     const selectedCategory = categoryFilter.value || "all";
     const selectedAuthor = authorFilter.value || "all";
@@ -194,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderBooks(filtered);
   }
 
+  // Registers UI event listeners for filters and modal behavior.
   function setupEventListeners() {
     categoryFilter.addEventListener("change", filterBooks);
     authorFilter.addEventListener("change", filterBooks);

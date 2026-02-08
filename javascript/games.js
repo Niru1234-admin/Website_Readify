@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Modal shell elements shared by all mini-games.
   const modal = document.getElementById("gameModal");
   const overlay = document.getElementById("gameModalOverlay");
   const closeBtn = document.getElementById("gameModalClose");
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // Memory game markup injected into the modal mount.
   const memoryTemplate = `
     <section style="padding:0; background:transparent;">
       <div>
@@ -56,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
   `;
 
+  // Builds and runs the memory match mini-game.
   function initMemoryGame(root) {
     const board = root.querySelector("[data-board]");
     const timeText = root.querySelector("[data-time]");
@@ -85,17 +88,20 @@ document.addEventListener("DOMContentLoaded", () => {
     let timer = null;
     let started = false;
 
+    // Formats elapsed seconds into mm:ss.
     const formatTime = (s) => {
       const mm = String(Math.floor(s / 60)).padStart(2, "0");
       const ss = String(s % 60).padStart(2, "0");
       return `${mm}:${ss}`;
     };
 
+    // Loads best time from localStorage.
     const loadBest = () => {
       const best = Number(localStorage.getItem(BEST_KEY));
       bestText.textContent = (!best || best <= 0) ? "--" : formatTime(best);
     };
 
+    // Stores new best time when current run is faster.
     const setBestIfBetter = (newSeconds) => {
       const best = Number(localStorage.getItem(BEST_KEY));
       if (!best || newSeconds < best) {
@@ -106,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     };
 
+    // Starts the in-game timer.
     const startTimer = () => {
       if (timer) return;
       timer = setInterval(() => {
@@ -114,11 +121,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     };
 
+    // Stops and clears the in-game timer.
     const stopTimer = () => {
       clearInterval(timer);
       timer = null;
     };
 
+    // Randomizes card order for each new round.
     const shuffle = (arr) => {
       for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -127,8 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return arr;
     };
 
+    // Creates a doubled emoji deck and shuffles it.
     const createDeck = () => shuffle([...EMOJIS, ...EMOJIS]);
 
+    // Handles card flipping and matching rules.
     function onCardClick(card){
       if (lock) return;
       if (card.classList.contains("flipped")) return;
@@ -179,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 650);
     }
 
+    // Draw all cards to the board.
     const render = () => {
       board.innerHTML = "";
       const deck = createDeck();
@@ -205,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
 
+    // Shows win modal with final stats.
     const showWin = () => {
       stopTimer();
       const bestUpdated = setBestIfBetter(seconds);
@@ -213,11 +226,13 @@ document.addEventListener("DOMContentLoaded", () => {
       winModal.setAttribute("aria-hidden", "false");
     };
 
+    // Hides the win modal overlay.
     const hideWin = () => {
       winModal.classList.remove("show");
       winModal.setAttribute("aria-hidden", "true");
     };
 
+    // Resets all memory game state and starts a fresh board.
     const restart = () => {
       hideWin();
       stopTimer();
@@ -236,6 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
       render();
     };
 
+    // Allows clicking outside win panel to restart quickly.
     const onWinClick = (e) => { if (e.target === winModal) restart(); };
     winModal.addEventListener("click", onWinClick);
     playAgainBtn.addEventListener("click", restart);
@@ -253,6 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let cleanupGame = null;
   let lastFocusedEl = null;
 
+  // Opens the game modal and mounts selected game UI.
   function openModal({ title, label, html, initFn }) {
     lastFocusedEl = document.activeElement;
 
@@ -273,6 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Closes modal and runs game cleanup logic if present.
   function closeModal() {
     if (typeof cleanupGame === "function") cleanupGame();
     cleanupGame = null;
@@ -288,6 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lastFocusedEl = null;
   }
 
+  // Launches a specific mini-game based on card data attribute.
   gameCards.forEach((btn) => {
     btn.addEventListener("click", () => {
       const game = btn.dataset.game;
@@ -325,6 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Shared modal close controls.
   overlay.addEventListener("click", closeModal);
   closeBtn.addEventListener("click", closeModal);
 
@@ -334,6 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+  // Typing game markup injected into the same modal mount.
   const typingTemplate = `
     <section style="padding:0; background:transparent;">
       <div class="typing_wrap">
@@ -397,6 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
   `;
 
+  // Builds and runs the typing speed mini-game.
   function initTypingGame(root){
     const quoteEl = root.querySelector("[data-quote]");
     const inputEl = root.querySelector("[data-input]");
@@ -432,11 +454,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let timer = null;
     let startTime = null;
 
+    // Picks a random sentence for the current round.
     const pickQuote = () => {
       quote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
       renderQuote("");
     };
 
+    // Renders quote text with correct/incorrect character highlighting.
     const renderQuote = (typed) => {
       let html = "";
       for (let i = 0; i < quote.length; i++) {
@@ -455,6 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
       quoteEl.innerHTML = html;
     };
 
+    // Escapes dynamic text before injecting into HTML.
     const escapeHtml = (s) =>
       s.replaceAll("&", "&amp;")
        .replaceAll("<", "&lt;")
@@ -462,6 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
        .replaceAll('"', "&quot;")
        .replaceAll("'", "&#039;");
 
+    // Calculates and updates live accuracy and WPM values.
     const computeStats = () => {
       const typed = inputEl.value;
 
@@ -482,10 +508,12 @@ document.addEventListener("DOMContentLoaded", () => {
       wpmEl.textContent = String(wpm);
     };
 
+    // Updates remaining time display.
     const setTime = (s) => {
       timeEl.textContent = String(s);
     };
 
+    // Stops timer and locks typing input.
     const stop = () => {
       clearInterval(timer);
       timer = null;
@@ -494,6 +522,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btnStart.innerHTML = `<i class="ri-play-line"></i> Start`;
     };
 
+    // One timer tick for countdown and stat refresh.
     const tick = () => {
       secondsLeft -= 1;
       setTime(secondsLeft);
@@ -504,6 +533,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
+    // Starts a fresh typing attempt.
     const start = () => {
       if (timer) return;
 
@@ -526,6 +556,7 @@ document.addEventListener("DOMContentLoaded", () => {
       timer = setInterval(tick, 1000);
     };
 
+    // Resets typing game UI and state.
     const reset = () => {
       stop();
       secondsLeft = Number(durationSel.value);
@@ -540,6 +571,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderQuote("");
     };
 
+    // Handles user typing and quote completion checks.
     const onInput = () => {
       if (!started) return;
       const typed = inputEl.value;
@@ -556,20 +588,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
+    // Toggle between start and stop actions.
     const onStartClick = () => {
       if (timer) stop();
       else start();
     };
 
+    // Apply new duration when not actively running.
     const onDurationChange = () => {
       if (!timer) reset();
     };
 
+    // Generate a new quote and clear current run.
     const onNewClick = () => {
       pickQuote();
       reset();
     };
 
+    // Manual reset button handler.
     const onResetClick = () => {
       reset();
     };
@@ -583,6 +619,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pickQuote();
     reset();
 
+    // Cleanup handlers when modal closes.
     return () => {
       stop();
       btnNew.removeEventListener("click", onNewClick);

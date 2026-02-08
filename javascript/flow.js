@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (hasCompletedSection) initCompletedSection();
 });
 
+// Initializes ambient sound controls and background video switching.
 function initSoundSection() {
   const SOUND_MAP = {
     rain: { audio: "assets/audio/rain.mp3", video: "assets/video/rain.mp4", label: "Rain" },
@@ -39,6 +40,7 @@ function initSoundSection() {
   audioEl.loop = true;
   audioEl.volume = Number(volumeRange?.value ?? 0.6);
 
+  // Paints custom slider fill to match current volume value.
   function setVolumeFill(value) {
     if (!volumeRange) return;
     const min = Number(volumeRange.min || 0);
@@ -48,16 +50,19 @@ function initSoundSection() {
     volumeRange.style.setProperty("--fill", `${percent}%`);
   }
 
+  // Marks selected sound button as active.
   function setActiveButton(key) {
     soundBtns.forEach((btn) => btn.classList.toggle("active", btn.dataset.sound === key));
   }
 
+  // Updates selected sound label and ON/OFF state text.
   function updateNowPlaying() {
     if (!nowPlaying) return;
     const label = SOUND_MAP[selectedSoundKey]?.label ?? "Unknown";
     nowPlaying.textContent = `Selected: ${label} • ${isOn ? "ON" : "OFF"}`;
   }
 
+  // Swaps the ambient background video.
   function setVideoFor(key) {
     const cfg = SOUND_MAP[key];
     if (!cfg || !videoEl || !videoSrcEl) return;
@@ -67,6 +72,7 @@ function initSoundSection() {
     videoEl.play().catch(() => {});
   }
 
+  // Starts playback for the selected ambient audio track.
   async function startAudioFor(key) {
     const cfg = SOUND_MAP[key];
     if (!cfg) return;
@@ -79,11 +85,13 @@ function initSoundSection() {
     } catch {}
   }
 
+  // Stops the current ambient audio track.
   function stopAudio() {
     audioEl.pause();
     audioEl.currentTime = 0;
   }
 
+  // Syncs toggle button visuals with ON/OFF state.
   function setToggleUI() {
     if (!toggleBtn || !toggleText) return;
     toggleBtn.classList.toggle("on", isOn);
@@ -91,6 +99,7 @@ function initSoundSection() {
     toggleText.textContent = isOn ? "ON" : "OFF";
   }
 
+  // Turns ambient playback on.
   async function turnOn() {
     isOn = true;
     setToggleUI();
@@ -98,6 +107,7 @@ function initSoundSection() {
     updateNowPlaying();
   }
 
+  // Turns ambient playback off.
   function turnOff() {
     isOn = false;
     setToggleUI();
@@ -105,6 +115,7 @@ function initSoundSection() {
     updateNowPlaying();
   }
 
+  // Handles selecting a different sound theme.
   soundBtns.forEach((btn) => {
     btn.addEventListener("click", async () => {
       const key = btn.dataset.sound;
@@ -123,12 +134,14 @@ function initSoundSection() {
     });
   });
 
+  // Handles master ON/OFF toggle button.
   toggleBtn.addEventListener("click", async () => {
     if (!selectedSoundKey) selectedSoundKey = "rain";
     if (isOn) turnOff();
     else await turnOn();
   });
 
+  // Updates volume in real time as slider changes.
   volumeRange?.addEventListener("input", (e) => {
     const value = Number(e.target.value);
     audioEl.volume = value;
@@ -142,6 +155,7 @@ function initSoundSection() {
   setVolumeFill(volumeRange?.value ?? 0.6);
 }
 
+// Initializes completed-book tracking and dropdown selection UI.
 function initCompletedSection() {
   const completedForm = document.getElementById("completedForm");
   const bookSelect = document.getElementById("bookSelect");
@@ -185,6 +199,7 @@ function initCompletedSection() {
   let dropdownQuery = "";
   let activeIndex = -1;
 
+  // Loads completed books from localStorage.
   function loadCompleted() {
     try {
       const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -194,28 +209,33 @@ function initCompletedSection() {
     }
   }
 
+  // Saves completed books to localStorage.
   function saveCompleted() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(completedBooks));
     } catch {}
   }
 
+  // Formats a date for list display.
   function formatDate(ts) {
     const d = new Date(ts);
     return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
   }
 
+  // Updates completed counters and badge text.
   function updateCompletedStats() {
     const total = completedBooks.length;
     if (completedCount) completedCount.textContent = String(total);
     if (completedBadge) completedBadge.textContent = `${total} item${total === 1 ? "" : "s"}`;
   }
 
+  // Applies current search filter to completed items.
   function getFilteredCompleted() {
     if (!searchQuery) return completedBooks;
     return completedBooks.filter((item) => (item.title || "").toLowerCase().includes(searchQuery));
   }
 
+  // Renders completed list state.
   function renderCompleted() {
     if (!completedList) return;
     completedList.innerHTML = "";
@@ -253,6 +273,7 @@ function initCompletedSection() {
     });
   }
 
+  // Adds selected book to completed list if it is not a duplicate.
   function addCompletedFromBook(book) {
     if (!book || !book.title) return;
 
@@ -276,6 +297,7 @@ function initCompletedSection() {
     renderCompleted();
   }
 
+  // Removes one completed item by id.
   function removeCompleted(id) {
     completedBooks = completedBooks.filter((b) => b.id !== id);
     saveCompleted();
@@ -283,6 +305,7 @@ function initCompletedSection() {
     renderCompleted();
   }
 
+  // Clears all completed items.
   function clearAllCompleted() {
     completedBooks = [];
     saveCompleted();
@@ -290,6 +313,7 @@ function initCompletedSection() {
     renderCompleted();
   }
 
+  // Opens the custom book dropdown.
   function openDropdown() {
     if (!bookSelect) return;
     bookSelect.classList.add("open");
@@ -300,6 +324,7 @@ function initCompletedSection() {
     setTimeout(() => bookSelectSearch?.focus(), 0);
   }
 
+  // Closes the custom book dropdown.
   function closeDropdown() {
     if (!bookSelect) return;
     bookSelect.classList.remove("open");
@@ -307,6 +332,7 @@ function initCompletedSection() {
     bookSelectMenu?.setAttribute("aria-hidden", "true");
   }
 
+  // Applies chosen dropdown book to form fields.
   function setSelectedBook(book) {
     selectedBook = book;
 
@@ -324,6 +350,7 @@ function initCompletedSection() {
     }
   }
 
+  // Filters dropdown options using query text.
   function getDropdownFilteredBooks() {
     const q = dropdownQuery.trim().toLowerCase();
     if (!q) return ALL_BOOKS;
@@ -335,6 +362,7 @@ function initCompletedSection() {
     });
   }
 
+  // Renders selectable entries in the dropdown.
   function renderDropdownList() {
     if (!bookSelectList) return;
 
@@ -369,6 +397,7 @@ function initCompletedSection() {
     });
   }
 
+  // Moves active dropdown row for keyboard navigation.
   function moveActive(delta) {
     const list = getDropdownFilteredBooks();
     if (list.length === 0) return;
@@ -385,6 +414,7 @@ function initCompletedSection() {
     el?.scrollIntoView({ block: "nearest" });
   }
 
+  // Selects the current active dropdown row.
   function pickActive() {
     const list = getDropdownFilteredBooks();
     if (list.length === 0) return;
@@ -396,36 +426,43 @@ function initCompletedSection() {
     closeDropdown();
   }
 
+  // Submits selected book as completed.
   completedForm?.addEventListener("submit", (e) => {
     e.preventDefault();
     if (!selectedBook) return;
     addCompletedFromBook(selectedBook);
   });
 
+  // Handles remove actions from completed list.
   completedList?.addEventListener("click", (e) => {
     const btn = e.target.closest(".remove_btn");
     if (!btn) return;
     removeCompleted(btn.dataset.id);
   });
 
+  // Clears all completed entries from the list.
   clearAllBtn?.addEventListener("click", clearAllCompleted);
 
+  // Filters completed list as the user types.
   completedSearch?.addEventListener("input", (e) => {
     searchQuery = e.target.value.trim().toLowerCase();
     renderCompleted();
   });
 
+  // Toggles dropdown open/close from trigger button.
   bookSelectBtn?.addEventListener("click", () => {
     if (bookSelect?.classList.contains("open")) closeDropdown();
     else openDropdown();
   });
 
+  // Filters dropdown options while typing.
   bookSelectSearch?.addEventListener("input", (e) => {
     dropdownQuery = e.target.value;
     activeIndex = 0;
     renderDropdownList();
   });
 
+  // Enables keyboard controls in dropdown search.
   bookSelectSearch?.addEventListener("keydown", (e) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -445,11 +482,13 @@ function initCompletedSection() {
     }
   });
 
+  // Closes dropdown when clicking outside the selector.
   window.addEventListener("click", (e) => {
     if (!bookSelect) return;
     if (!bookSelect.contains(e.target)) closeDropdown();
   });
 
+  // Initial render with any persisted data.
   loadCompleted();
   updateCompletedStats();
   renderCompleted();

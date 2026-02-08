@@ -35,20 +35,24 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastComputed = null;
   let savedList = [];
 
+  // Keep values inside a safe numeric range.
   function clamp(n, min, max) {
     return Math.max(min, Math.min(max, n));
   }
 
+  // Format a timestamp into a short readable date.
   function formatDate(ts) {
     const d = new Date(ts);
     return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
   }
 
+  // Format a timestamp into a short readable time.
   function formatTime(ts) {
     const d = new Date(ts);
     return d.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
   }
 
+  // Animate number transitions in summary fields.
   function animateNumber(el, from, to, duration = 450) {
     if (!el) return;
 
@@ -66,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(tick);
   }
 
+  // Render suggestion tips under the tracker result.
   function setSuggestions(items) {
     if (!trackerSuggestions) return;
     trackerSuggestions.innerHTML = "";
@@ -76,11 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Show inline validation or status text.
   function setError(msg) {
     if (!trackerError) return;
     trackerError.textContent = msg || "";
   }
 
+  // Validate form values and compute reading progress metrics.
   function compute() {
     const bookName = (bookNameEl?.value || "").trim();
     const total = Number(totalPagesEl?.value);
@@ -103,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return { bookName, total, read, speed, percent, remaining, daysRoundedUp, finishTs };
   }
 
+  // Paint computed tracker values into the UI.
   function render(result) {
     const prev = Number(percentText?.textContent);
     animateNumber(percentText, prev, result.percent);
@@ -133,12 +141,14 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  // Save the latest calculation snapshot.
   function saveSingle(data) {
     const payload = { ...data, updatedAt: Date.now() };
     localStorage.setItem(STORAGE_SINGLE_KEY, JSON.stringify(payload));
     updateLastSaved(payload.updatedAt);
   }
 
+  // Load the latest saved snapshot.
   function loadSingle() {
     try {
       const raw = localStorage.getItem(STORAGE_SINGLE_KEY);
@@ -148,16 +158,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Remove the latest saved snapshot.
   function clearSingle() {
     localStorage.removeItem(STORAGE_SINGLE_KEY);
     updateLastSaved(null);
   }
 
+  // Refresh the "last saved" label.
   function updateLastSaved(ts) {
     if (!lastSavedText) return;
     lastSavedText.textContent = ts ? `Last saved: ${formatDate(ts)} ${formatTime(ts)}` : "No saved progress yet.";
   }
 
+  // Load the multi-item saved progress list.
   function loadSavedList() {
     try {
       savedList = JSON.parse(localStorage.getItem(STORAGE_LIST_KEY)) || [];
@@ -167,10 +180,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Persist the multi-item saved progress list.
   function saveSavedList() {
     localStorage.setItem(STORAGE_LIST_KEY, JSON.stringify(savedList));
   }
 
+  // Create a unique id for saved entries.
   function makeId() {
     try {
       if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
@@ -178,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
   }
 
+  // Add current result to the saved history list.
   function addToSavedList(result) {
     const item = {
       id: makeId(),
@@ -199,18 +215,21 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSavedList();
   }
 
+  // Remove one saved entry by id.
   function removeSavedItem(id) {
     savedList = savedList.filter((x) => x.id !== id);
     saveSavedList();
     renderSavedList();
   }
 
+  // Clear all saved history entries.
   function clearSavedList() {
     savedList = [];
     saveSavedList();
     renderSavedList();
   }
 
+  // Render saved history entries in the list UI.
   function renderSavedList() {
     if (!savedListEl) return;
     savedListEl.innerHTML = "";
@@ -245,6 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Load a saved entry back into the input form.
   function loadSavedItemIntoForm(id) {
     const item = savedList.find((x) => x.id === id);
     if (!item) return;
@@ -261,6 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Calculate and render tracker metrics from form submit.
   trackerForm?.addEventListener("submit", (e) => {
     if (!trackerForm.checkValidity()) {
       e.preventDefault();
@@ -281,6 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
     render(result);
   });
 
+  // Save current calculated progress to storage and history.
   saveBtn?.addEventListener("click", () => {
     if (!trackerForm?.checkValidity()) {
       trackerForm?.reportValidity();
@@ -304,6 +326,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => setError(""), 1200);
   });
 
+  // Reset form and computed UI state.
   clearBtn?.addEventListener("click", () => {
     clearSingle();
     lastComputed = null;
@@ -325,6 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => setError(""), 1200);
   });
 
+  // Handle load/remove actions in the saved list.
   savedListEl?.addEventListener("click", (e) => {
     const btn = e.target.closest("button");
     if (!btn) return;
@@ -336,12 +360,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (action === "load") loadSavedItemIntoForm(id);
   });
 
+  // Remove all saved history items at once.
   clearSavedBtn?.addEventListener("click", () => {
     clearSavedList();
     setError("Saved list cleared");
     setTimeout(() => setError(""), 1200);
   });
 
+  // Bootstraps tracker UI with any saved data.
   (function init() {
     loadSavedList();
     renderSavedList();

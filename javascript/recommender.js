@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.querySelector(".recommender_section");
   if (!root) return;
 
+  // Source list used for random recommendations.
   const BOOKS = [
     {
       id: "b1",
@@ -137,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentRecommendation = null;
   const STORAGE_KEY = "readifyReadingList";
 
+  // Read saved reading list from local storage.
   function getSavedList() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -146,10 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Persist reading list to local storage.
   function setSavedList(list) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
   }
 
+  // Apply selected filters to the in-memory book list.
   function filterBooks() {
     const g = genreSelect.value;
     const l = lengthSelect.value;
@@ -160,10 +164,12 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  // Pick one random item from a list.
   function pickRandom(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
+  // Display the selected recommendation in the result card.
   function showRecommendation(book) {
     currentRecommendation = book;
 
@@ -181,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.classList.add("animate_card");
   }
 
+  // Find and show a recommendation based on current filters.
   function pickRecommendation() {
     const filtered = filterBooks();
 
@@ -202,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showRecommendation(pickRandom(filtered));
   }
 
+  // Render the user's saved reading list.
   function renderReadingList() {
     const list = getSavedList();
     readingListEl.innerHTML = "";
@@ -235,25 +243,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Save current recommendation if not already in the list.
   function saveCurrent() {
     if (!currentRecommendation) return;
 
     const list = getSavedList();
     if (list.some(b => b.id === currentRecommendation.id)) {
-      recHint.textContent = "Already saved ✅";
+      recHint.textContent = "Already saved";
       return;
     }
 
     list.unshift(currentRecommendation);
     setSavedList(list);
-    recHint.textContent = "Saved to your reading list ✅";
+    recHint.textContent = "Saved to your reading list";
     renderReadingList();
   }
 
+  // Wire filter and action handlers.
   pickAgainBtn.addEventListener("click", pickRecommendation);
   saveBtn.addEventListener("click", saveCurrent);
   genreSelect.addEventListener("change", pickRecommendation);
   lengthSelect.addEventListener("change", pickRecommendation);
 
+  // Draw saved list on page load.
   renderReadingList();
 });

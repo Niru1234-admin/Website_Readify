@@ -16,23 +16,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const STORAGE_KEY = "readifyFeedback";
 
+  // Basic email format check for feedback form validation.
   const isEmailValid = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     return re.test(email.trim());
   };
 
+  // Marks a field invalid and shows its error text.
   const setError = (inputEl, errEl, message) => {
     const group = inputEl.closest(".feedback_group");
     group.classList.add("invalid");
     errEl.textContent = message;
   };
 
+  // Clears invalid state for a field.
   const clearError = (inputEl, errEl) => {
     const group = inputEl.closest(".feedback_group");
     group.classList.remove("invalid");
     errEl.textContent = "";
   };
 
+  // Shows and auto-hides the success message box.
   const showSuccess = (text) => {
     successBox.textContent = text;
     successBox.style.display = "block";
@@ -43,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3500);
   };
 
+  // Appends one feedback record to localStorage.
   const saveFeedback = (data) => {
     const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     existing.push(data);
@@ -50,22 +55,26 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
 
+  // Live name validation while typing.
   nameEl.addEventListener("input", () => {
     const v = nameEl.value.trim();
     if (v.length >= 2) clearError(nameEl, errName);
   });
 
+  // Live email validation while typing.
   emailEl.addEventListener("input", () => {
     const v = emailEl.value.trim();
     if (isEmailValid(v)) clearError(emailEl, errEmail);
   });
 
+  // Live message validation while typing.
   msgEl.addEventListener("input", () => {
     const v = msgEl.value.trim();
     if (v.length >= 10) clearError(msgEl, errMessage);
   });
 
   // ---------- submit ----------
+  // Validates, stores, and clears feedback form on submit.
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -147,6 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
+  // Builds one FAQ item with toggle behavior.
   const createFaqItem = (item, index) => {
     const wrapper = document.createElement("div");
     wrapper.className = "faq_item";
@@ -195,6 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return wrapper;
   };
 
+  // Render FAQ items when the container exists.
   if (faqList) {
     faqs.forEach((f, i) => faqList.appendChild(createFaqItem(f, i)));
   }
