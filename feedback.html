@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+         <!--favicon-->
+         <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/mini_logo.png">
+         <!--remix icons-->
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css">
+
+         <!--swiper css-->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+
+         <!-- other css -->
+         <link rel="stylesheet" href="css/reset.css">
+         <link rel="stylesheet" href="css/styles.css">
+
+      <title>Readify Website</title>
+   </head>
+   <body>
+
+      <!-- HEADER-->
+      <header class="header">
+         <div class="nav_container">
+            <a href="index.html" class="nav_logo">
+               <img src="assets/logo/big_logo.png" alt="logo" class="logo">
+               <span class="logo_text">Readify</span>
+            </a>
+
+            <nav class="nav_menu" id="nav_menu">
+               <ul class="menu_list">
+                  <li class="nav_item"><a href="index.html" class="menu_link">Home</a></li>
+                  <li class="nav_item"><a href="explorer.html" class="menu_link">Explorer</a></li>
+                  <li class="nav_item"><a href="recommender.html" class="menu_link">Recommender</a></li>
+                  <li class="nav_item"><a href="flow.html" class="menu_link">Flow</a></li>
+                  <li class="nav_item"><a href="tracker.html" class="menu_link">Tracker</a></li>
+                  <li class="nav_item"><a href="games.html" class="menu_link">Games</a></li>
+                  <li class="nav_item"><a href="feedback.html" class="menu_link">Feedback</a></li>
+                  <span class="nav-indicator"></span>
+               </ul>
+            </nav>
+
+            <div class="nav_icons">
+               <i class="ri-user-line"></i>
+               <i class="ri-moon-line"></i>
+            </div>
+
+            
+            <div class="hamburger" id="hamburger">
+                  <span class="br"></span>
+                  <span class="br"></span>
+                  <span class="br"></span>
+            </div>
+         </div>
+
+         <div class="mobile_overlay" id="mobile_overlay"></div>
+      </header>
+      
+      <main class="feedback">
+            <section class="explorer_hero">
+               <div class="hero_content">
+                  <h1 class="hero_title">Find Your Next Book</h1>
+                  <p class="hero_text">
+                  Choose what you feel like reading and we’ll recommend something instantly.
+                  </p>
+
+                  <div class="hero_features">
+                  <div class="feature_item">
+                     <h3>Story Rich</h3>
+                     <p>Every book is packed with wonderful stories and lessons.</p>
+                  </div>
+                  <div class="feature_item">
+                     <h3>Quick Picks</h3>
+                     <p>Get a recommendation in one click.</p>
+                  </div>
+                  <div class="feature_item">
+                     <h3>Save & Read Later</h3>
+                     <p>Build your own reading list with one tap.</p>
+                  </div>
+                  </div>
+               </div>
+            </section>
+
+            <section class="feedback_section">
+               <div class="feedback_container">
+                  <div class="feedback_layout">
+
+                     <div class="feedback_card">
+                        <h2 class="section_title">Send us your feedback</h2>
+                        <p class="feedback_card_subtitle">We usually respond within 24 hours.</p>
+                        <div class="feedback_success" id="feedbackSuccess" role="status" aria-live="polite"></div>
+                        <form class="feedback_form" id="feedbackForm">
+
+                           <div class="feedback_group">
+                              <label for="fbName">Name <span class="req">*</span></label>
+                              <input type="text" id="fbName" name="name" placeholder="Your full name" />
+                              <small class="feedback_error" id="errName"></small>
+                           </div>
+
+                           <div class="feedback_group">
+                              <label for="fbEmail">Email <span class="req">*</span></label>
+                              <input type="email" id="fbEmail" name="email" placeholder="you@example.com" />
+                              <small class="feedback_error" id="errEmail"></small>
+                           </div>
+
+                           <div class="feedback_group">
+                              <label for="fbMessage">Message <span class="req">*</span></label>
+                              <textarea id="fbMessage" name="message" rows="6" placeholder="How can we help?"></textarea>
+                              <small class="feedback_error" id="errMessage"></small>
+                           </div>
+
+                           <button type="submit" class="feedback_btn">Send Message</button>
+                           <p class="feedback_hint">
+                              Your message will be saved in this browser (localStorage) for this assignment.
+                           </p>
+                        </form>
+                     </div>
+
+                     <div class="feedback_card feedback_card_info">
+                        <h2 class="feedback_card_title">Readify HQ</h2>
+                        <p class="feedback_address">
+                           18/2, Ambesevanagama, Kengallla.
+                        </p>
+
+                        <div class="feedback_map">
+                           <iframe
+                           title="Readify Location"
+                           loading="lazy"
+                           referrerpolicy="no-referrer-when-downgrade"
+                           src="https://www.google.com/maps?q=Kengalla%20Sri%20Lanka&output=embed">
+                           </iframe>
+                     </div>
+
+                     <div class="feedback_contact_list">
+                        <div class="feedback_contact_item">
+                        <i class="ri-phone-line"></i>
+                        <span>0761143396</span>
+                        </div>
+                        <div class="feedback_contact_item">
+                        <i class="ri-mail-line"></i>
+                        <span>nirushansivaraja@gmail.com</span>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </section>
+
+         <section class="faq_section">
+            <div class="faq_container">
+               <div class="faq_header">
+                  <p class="faq_label">FAQ</p>
+                  <h2 class="faq_title">Frequently Asked Questions</h2>
+               </div>
+
+               <div class="faq_list" id="faqList">
+                  <!-- JS injects items -->
+               </div>
+            </div>
+         </section>
+      </main>     
+      
+      <!--LOGIN-->
+      <div class="login" id="login_content">
+         <div class="login_overlay"></div> 
+         <div class="login_modal">
+            <i class="ri-close-line login_close"></i> 
+            <h2 class="login_title">Login</h2>
+            <form class="login_form">
+               <div class="form_group">
+                  <label for="username">Email</label>
+                  <input type="text" id="username" placeholder="Enter your username or email" required>
+               </div>
+               <div class="form_group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" placeholder="Enter your password" required>
+               </div>
+               <button type="submit" class="login_btn">Login</button>
+               <p class="login_footer">Don't have an account? <a href="#">Sign up</a></p>
+            </form>
+         </div>
+      </div>
+
+      <footer class="footer">
+            <div class="footer_container">
+
+               <div class="footer_column">
+                  <h3>Subscribe Newsletter</h3>
+                  <p>
+                     Subscribe for the newsletter for more book recommendations,
+                     daily challenges and offers.
+                  </p>
+
+                  <form class="newsletter_form">
+                     <input type="email" placeholder="Enter email" required>
+                     <button type="submit">Subscribe Now</button>
+                  </form>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Links</h3>
+                  <ul>
+                     <li><a href="#">Privacy Policy</a></li>
+                     <li><a href="#">Terms & Conditions</a></li>
+                     <li><a href="#">Customer Support</a></li>
+                     <li><a href="#">FAQ's</a></li>
+                  </ul>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Resources</h3>
+                  <ul>
+                     <li><a href="#">Reading plans</a></li>
+                     <li><a href="#">E-Library</a></li>
+                     <li><a href="#">Blog articles</a></li>
+                     <li><a href="#">Book stores</a></li>
+                  </ul>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Contact us</h3>
+                  <ul class="contact_list">
+                     <li>
+                        <i class="ri-map-pin-line"></i>
+                        18/2, Ambesevanagama, Kengallla.
+                     </li>
+                     <li>
+                        <i class="ri-phone-line"></i>
+                        0761143396
+                     </li>
+                     <li>
+                        <i class="ri-phone-line"></i>
+                        nirushansivaraja@gmail.com
+                     </li>
+                  </ul>
+                  <div class="socials">
+                     <i class="ri-facebook-fill"></i>
+                     <i class="ri-instagram-line"></i>
+                     <i class="ri-twitter-x-line"></i>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <p>© 2025 Readify Made by <span>Nirushan</span></p>
+            </div>
+         </footer>
+         
+      <!--Swiper JS-->
+      <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+      <script src="javascript/pages/feedback.js"></script>
+
+      <!--Main JS-->
+      <script src="javascript/pages/main.js"></script>
+
+      <!--Script JS-->
+      <script src="javascript/pages/script.js"></script>
+
+   </body>
+</html>
+

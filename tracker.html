@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+         <!--favicon-->
+         <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/mini_logo.png">
+         <!--remix icons-->
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css">
+
+         <!--swiper css-->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+
+         <!-- other css -->
+         <link rel="stylesheet" href="css/reset.css">
+         <link rel="stylesheet" href="css/styles.css">
+
+      <title>Readify Website</title>
+   </head>
+   <body>
+
+      <!-- HEADER-->
+      <header class="header">
+         <div class="nav_container">
+            <a href="index.html" class="nav_logo">
+               <img src="assets/logo/big_logo.png" alt="logo" class="logo">
+               <span class="logo_text">Readify</span>
+            </a>
+
+            <nav class="nav_menu" id="nav_menu">
+               <ul class="menu_list">
+                  <li class="nav_item"><a href="index.html" class="menu_link">Home</a></li>
+                  <li class="nav_item"><a href="explorer.html" class="menu_link">Explorer</a></li>
+                  <li class="nav_item"><a href="recommender.html" class="menu_link">Recommender</a></li>
+                  <li class="nav_item"><a href="flow.html" class="menu_link">Flow</a></li>
+                  <li class="nav_item"><a href="tracker.html" class="menu_link">Tracker</a></li>
+                  <li class="nav_item"><a href="games.html" class="menu_link">Games</a></li>
+                  <li class="nav_item"><a href="feedback.html" class="menu_link">Feedback</a></li>
+                  <span class="nav-indicator"></span>
+               </ul>
+            </nav>
+
+            <div class="nav_icons">
+               <i class="ri-user-line"></i>
+               <i class="ri-moon-line"></i>
+            </div>
+
+            
+            <div class="hamburger" id="hamburger">
+                  <span class="br"></span>
+                  <span class="br"></span>
+                  <span class="br"></span>
+            </div>
+         </div>
+
+         <div class="mobile_overlay" id="mobile_overlay"></div>
+      </header>
+      
+      <main class="tracker">
+            <section class="explorer_hero">
+               <div class="hero_content">
+                  <h1 class="hero_title">Find Your Next Book</h1>
+                  <p class="hero_text">
+                  Choose what you feel like reading and we’ll recommend something instantly.
+                  </p>
+
+                  <div class="hero_features">
+                  <div class="feature_item">
+                     <h3>Story Rich</h3>
+                     <p>Every book is packed with wonderful stories and lessons.</p>
+                  </div>
+                  <div class="feature_item">
+                     <h3>Quick Picks</h3>
+                     <p>Get a recommendation in one click.</p>
+                  </div>
+                  <div class="feature_item">
+                     <h3>Save & Read Later</h3>
+                     <p>Build your own reading list with one tap.</p>
+                  </div>
+                  </div>
+               </div>
+            </section>
+
+            <section class="tracker_section">
+               <div class="container tracker_layout">
+
+                  <div class="tracker_card tracker_form_card">
+                     <h2 class="tracker_title">Reading Tracker</h2>
+                     <p class="tracker_subtitle">Enter your progress and calculate your finish time.</p>
+
+                     <form id="trackerForm" class="tracker_form">
+                        <div class="tracker_grid">
+                        
+                        <div class="tracker_field">
+                           <label for="bookName">Book Name</label>
+                           <input
+                              type="text"
+                              id="bookName"
+                              placeholder="e.g. The Brave Little Lion"
+                              required
+                           >
+                        </div>
+
+                        <div class="tracker_group">
+                           <label for="totalPages">Total Pages</label>
+                           <input id="totalPages" type="number" min="1" step="1" placeholder="e.g., 300" required />
+                        </div>
+
+                        <div class="tracker_group">
+                           <label for="pagesRead">Pages Read</label>
+                           <input id="pagesRead" type="number" min="0" step="1" placeholder="e.g., 120" required />
+                        </div>
+
+                        <div class="tracker_group tracker_full">
+                           <label for="speed">Reading Speed (pages/day)</label>
+                           <input id="speed" type="number" min="1" step="1" placeholder="e.g., 25" required />
+                           <small class="tracker_hint">Tip: If you read 20 pages daily, enter 20.</small>
+                        </div>
+
+                        </div>
+
+                        <div class="tracker_actions">
+                        <button class="button" type="submit" id="calcBtn">Calculate</button>
+                        <button class="tracker_btn secondary" type="button" id="saveBtn">Save</button>
+                        <button class="tracker_btn danger" type="button" id="clearBtn">Clear</button>
+                        </div>
+
+                        <p class="tracker_error" id="trackerError" aria-live="polite"></p>
+                     </form>
+                  </div>
+
+                  <div class="tracker_card tracker_results_card">
+                     <div class="tracker_results_top">
+                        <h2 class="tracker_title">Results</h2>
+                        <p class="tracker_subtitle" id="lastSavedText">No saved progress yet.</p>
+                     </div>
+
+                     <div class="tracker_stat_row">
+                        <div class="tracker_stat">
+                        <div class="tracker_stat_label">Completed</div>
+                        <div class="tracker_stat_value">
+                           <span id="percentText">--</span><span class="unit">%</span>
+                        </div>
+                        </div>
+
+                        <div class="tracker_stat">
+                        <div class="tracker_stat_label">Remaining Pages</div>
+                        <div class="tracker_stat_value">
+                           <span id="remainingText">--</span>
+                        </div>
+                        </div>
+                     </div>
+
+                     <div class="tracker_progress_wrap" aria-label="Progress bar">
+                        <div class="tracker_progress_bar">
+                        <div class="tracker_progress_fill" id="progressFill"></div>
+                        </div>
+                        <div class="tracker_progress_meta">
+                        <span id="progressLabel">Fill the form and click Calculate.</span>
+                        </div>
+                     </div>
+
+                     <div class="tracker_finish_box">
+                        <h3 class="tracker_box_title">Estimated Finish</h3>
+                        <div class="tracker_finish_grid">
+                        <div class="tracker_finish_item">
+                           <div class="tracker_finish_label">Time</div>
+                           <div class="tracker_finish_value" id="finishDays">--</div>
+                        </div>
+                        <div class="tracker_finish_item">
+                           <div class="tracker_finish_label">Date</div>
+                           <div class="tracker_finish_value" id="finishDate">--</div>
+                        </div>
+                        </div>
+                        <ul class="tracker_suggestions" id="trackerSuggestions">
+                        <li>Fill the form and click <strong>Calculate</strong>.</li>
+                        </ul>
+                     </div>
+
+                     <div class="tracker_saved_box">
+                        <div class="tracker_saved_header">
+                           <h3 class="tracker_box_title">Saved Progress</h3>
+                           <button class="tracker_btn danger" type="button" id="clearSavedBtn">Clear Saved</button>
+                        </div>
+
+                        <ul class="tracker_saved_list" id="savedList"></ul>
+                        <p class="tracker_empty" id="savedEmpty" style="display:none;">No saved progress yet.</p>
+                     </div>
+                  </div>
+               </div>
+            </section>
+      </main>      
+     
+      <!--LOGIN-->
+      <div class="login" id="login_content">
+         <div class="login_overlay"></div> 
+         <div class="login_modal">
+            <i class="ri-close-line login_close"></i> 
+            <h2 class="login_title">Login</h2>
+            <form class="login_form">
+               <div class="form_group">
+                  <label for="username">Email</label>
+                  <input type="text" id="username" placeholder="Enter your username or email" required>
+               </div>
+               <div class="form_group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" placeholder="Enter your password" required>
+               </div>
+               <button type="submit" class="login_btn">Login</button>
+               <p class="login_footer">Don't have an account? <a href="#">Sign up</a></p>
+            </form>
+         </div>
+      </div>
+
+      <footer class="footer">
+            <div class="footer_container">
+
+               <div class="footer_column">
+                  <h3>Subscribe Newsletter</h3>
+                  <p>
+                     Subscribe for the newsletter for more book recommendations,
+                     daily challenges and offers.
+                  </p>
+
+                  <form class="newsletter_form">
+                     <input type="email" placeholder="Enter email" required>
+                     <button type="submit">Subscribe Now</button>
+                  </form>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Links</h3>
+                  <ul>
+                     <li><a href="#">Privacy Policy</a></li>
+                     <li><a href="#">Terms & Conditions</a></li>
+                     <li><a href="#">Customer Support</a></li>
+                     <li><a href="#">FAQ's</a></li>
+                  </ul>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Resources</h3>
+                  <ul>
+                     <li><a href="#">Reading plans</a></li>
+                     <li><a href="#">E-Library</a></li>
+                     <li><a href="#">Blog articles</a></li>
+                     <li><a href="#">Book stores</a></li>
+                  </ul>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Contact us</h3>
+                  <ul class="contact_list">
+                     <li>
+                        <i class="ri-map-pin-line"></i>
+                        18/2, Ambesevanagama, Kengallla.
+                     </li>
+                     <li>
+                        <i class="ri-phone-line"></i>
+                        0761143396
+                     </li>
+                     <li>
+                        <i class="ri-phone-line"></i>
+                        nirushansivaraja@gmail.com
+                     </li>
+                  </ul>
+                  <div class="socials">
+                     <i class="ri-facebook-fill"></i>
+                     <i class="ri-instagram-line"></i>
+                     <i class="ri-twitter-x-line"></i>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <p>© 2025 Readify Made by <span>Nirushan</span></p>
+            </div>
+         </footer>
+
+      <!--Swiper JS-->
+      <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+      <script src="javascript/pages/tracker.js"></script>
+      <!--Main JS-->
+      <script src="javascript/pages/main.js"></script>
+
+      <!--Script JS-->
+      <script src="javascript/pages/script.js"></script>
+
+   </body>
+</html>
+

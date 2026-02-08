@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+         <!--favicon-->
+         <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/mini_logo.png">
+         <!--remix icons-->
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css">
+
+         <!--swiper css-->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+
+         <!-- other css -->
+         <link rel="stylesheet" href="css/reset.css">
+         <link rel="stylesheet" href="css/styles.css">
+
+      <title>Readify Website</title>
+   </head>
+   <body>
+      <!--PRELOAD-->
+      <div class="preload" data-preload>
+         <div class="loader"></div>
+         <p class="text">Readify</p>
+      </div>
+
+      <!-- HEADER-->
+      <header class="header">
+         <div class="nav_container">
+            <a href="index.html" class="nav_logo">
+               <img src="assets/logo/big_logo.png" alt="logo" class="logo">
+               <span class="logo_text">Readify</span>
+            </a>
+
+            <nav class="nav_menu" id="nav_menu">
+               <ul class="menu_list">
+                  <li class="nav_item"><a href="index.html" class="menu_link">Home</a></li>
+                  <li class="nav_item"><a href="explorer.html" class="menu_link">Explorer</a></li>
+                  <li class="nav_item"><a href="recommender.html" class="menu_link">Recommender</a></li>
+                  <li class="nav_item"><a href="flow.html" class="menu_link">Flow</a></li>
+                  <li class="nav_item"><a href="tracker.html" class="menu_link">Tracker</a></li>
+                  <li class="nav_item"><a href="games.html" class="menu_link">Games</a></li>
+                  <li class="nav_item"><a href="feedback.html" class="menu_link">Feedback</a></li>
+                  <span class="nav-indicator"></span>
+               </ul>
+            </nav>
+
+            <div class="nav_icons">
+               <i class="ri-user-line"></i>
+               <i class="ri-moon-line"></i>
+            </div>
+
+            
+            <div class="hamburger" id="hamburger">
+                  <span class="br"></span>
+                  <span class="br"></span>
+                  <span class="br"></span>
+            </div>
+         </div>
+
+         <div class="mobile_overlay" id="mobile_overlay"></div>
+      </header>
+
+
+      <!--LOGIN-->
+      <div class="login" id="login_content">
+         <div class="login_overlay"></div> 
+         <div class="login_modal">
+            <i class="ri-close-line login_close"></i> 
+            <h2 class="login_title">Login</h2>
+            <form class="login_form">
+               <div class="form_group">
+                  <label for="username">Email</label>
+                  <input type="text" id="username" placeholder="Enter your username or email" required>
+               </div>
+               <div class="form_group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" placeholder="Enter your password" required>
+               </div>
+               <button type="submit" class="login_btn">Login</button>
+               <p class="login_footer">Don't have an account? <a href="#">Sign up</a></p>
+            </form>
+         </div>
+      </div>
+
+      <!--Mode toggle-->
+
+      <!--Main -->
+         <main class="main">
+            <section class="home_section" id="home">
+               <div class="container home_container">
+
+               <div class="home_text">
+                  <h1 class="hometitle">
+                     Browse & <br>
+                     Select BOOKS
+                  </h1>
+
+                  <div class="quote-swiper swiper">
+                     <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                           <p class="quote_text">
+                              "A room without books is like a body without a soul." 
+                           </p>
+                           <span class="quote_author">– Marcus Tullius Cicero</span>
+                        </div>
+
+                        <div class="swiper-slide">
+                           <p class="quote_text">
+                              "Books are a uniquely portable magic." 
+                           </p>
+                           <span class="quote_author">– Stephen King</span>
+                        </div>
+
+                        <div class="swiper-slide">
+                           <p class="quote_text">
+                              "So many books, so little time." 
+                           </p>
+                           <span class="quote_author">– Frank Zappa</span>
+                        </div>
+                     </div>
+                  </div>
+
+                  <a href="#featured" class="button">Explore Now</a>
+               </div>
+
+               <div class="home_images">
+                  <div class="book_swiper swiper">
+                     <div class="swiper-wrapper">
+
+                        <div class="article swiper-slide">
+                           <img src="assets/images/book-1.png" alt="image1" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/images/book-2.png" alt="image2" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/images/book-3.png" alt="image3" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/images/book-4.png" alt="image4" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/images/book-1.png" alt="image5" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/images/book-2.png" alt="image6" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/images/book-3.png" alt="image7" class="home_img">
+                        </div>
+
+                        <div class="article swiper-slide">
+                           <img src="assets/images/book-4.png" alt="image8" class="home_img">
+                        </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+
+            <section class="author_of_day section_spacing">
+               <div class="author_card">
+                  <div class="author_header">
+                     <span class="star">⭐</span>
+                     <span class="label">Author of the Day</span>
+                  </div>
+
+                  <div class="author_content">
+                     <div class="author_avatar" id="authorAvatar">
+                        <img src="assets/images/author1.jpg" alt="author_image">
+                     </div>
+                     <div class="author_text">
+                        <h3>J.K. Rowling</h3>
+                        <p>
+                           Discover a smarter, simpler way to enjoy the stories you love.
+                           Readify brings together captivating books, personalized
+                           recommendations, and an effortless reading experience—all in one place.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </section>
+
+            <section class="welcome section_spacing">
+               <div class="container">
+                  <h2 class="section_title"> Welcome To Readify</h2>
+                  <div class="int_content">
+                     <div class="int_text">
+                        <p>We believe that a great book can change your life, 
+                           but a great reading habit can change your world. Use 
+                           our curated recommendations to find your next obsession
+                           and our intuitive tools to make reading a seamless part 
+                           of your daily ritual</p>
+                        
+                           <div class="offerings">
+                              <div class="offer_item">
+                                 <h3>Exploring Made Easy</h3>
+                                 <p>Discover all the books based on your interest.</p>
+                              </div>
+
+                              <div class="offer_item">
+                                 <h3>Get Recommendations</h3>
+                                 <p>Tired of finding books? Let us help you find the book you desire.</p>
+                              </div>
+
+                              <div class="offer_item">
+                                 <h3>Read Books In A Flow</h3>
+                                 <p>Read the books you love without getting distracted.</p>
+                              </div>
+
+                              <div class="offer_item">
+                                 <h3>Track Your Progress </h3>
+                                 <p>Track your reading progress according to what your read.</p>
+                              </div>
+
+                              <div class="offer_item">
+                                 <h3>Play Reading Related Games</h3>
+                                 <p>Tired of reading all day? Enjoy by playing our cool games.</p>
+                              </div>
+
+                              <div class="offer_item">
+                                 <h3>Get Feedback </h3>
+                                 <p>Want to connect with us or help us improve? Send us a Feedback.</p>
+                              </div>
+                           </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+
+            <section class="featured_books section_spacing" id="featured">
+               <h2 class="section_title">Featured Books</h2>
+               <div class="featured_container container">
+                  <div class="featured_swiper swiper">
+                     <div class="swiper-wrapper">
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/images/book-1.png" class="featured_image" alt="book1">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/images/book-2.png" class="featured_image" alt="book1">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/images/book-3.png" class="featured_image" alt="book1">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+
+                        <article class="featured_card swiper-slide">
+                           <img src="assets/images/book-4.png" class="featured_image" alt="book1">
+                           <h2 class="f_title">Featured Book</h2>
+                           <div class="featured_price">
+                              <span class="discount">Free</span>
+                              <span class="price">$19.99</span>
+                           </div>
+                           <button class="button">Read</button>
+                           <div class="f_actions">
+                              <button>
+                                 <i class="ri-heart-line"></i>
+                              </button>
+
+                              <button>
+                                 <i class="ri-focus-2-line"></i>
+                              </button>
+                           </div>
+                        </article>
+                     </div>
+
+                     <div class="swiper-button-prev">
+                     </div>
+                     <div class="swiper-button-next">
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </main>
+
+         <footer class="footer">
+            <div class="footer_container">
+
+               <div class="footer_column">
+                  <h3>Subscribe Newsletter</h3>
+                  <p>
+                     Subscribe for the newsletter for more book recommendations,
+                     daily challenges and offers.
+                  </p>
+
+                  <form class="newsletter_form">
+                     <input type="email" placeholder="Enter email" required>
+                     <button type="submit">Subscribe Now</button>
+                  </form>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Links</h3>
+                  <ul>
+                     <li><a href="#">Privacy Policy</a></li>
+                     <li><a href="#">Terms & Conditions</a></li>
+                     <li><a href="#">Customer Support</a></li>
+                     <li><a href="#">FAQ's</a></li>
+                  </ul>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Resources</h3>
+                  <ul>
+                     <li><a href="#">Reading plans</a></li>
+                     <li><a href="#">E-Library</a></li>
+                     <li><a href="#">Blog articles</a></li>
+                     <li><a href="#">Book stores</a></li>
+                  </ul>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Contact us</h3>
+                  <ul class="contact_list">
+                     <li>
+                        <i class="ri-map-pin-line"></i>
+                        18/2, Ambesevanagama, Kengallla.
+                     </li>
+                     <li>
+                        <i class="ri-phone-line"></i>
+                        0761143396
+                     </li>
+                     <li>
+                        <i class="ri-phone-line"></i>
+                        nirushansivaraja@gmail.com
+                     </li>
+                  </ul>
+                  <div class="socials">
+                     <i class="ri-facebook-fill"></i>
+                     <i class="ri-instagram-line"></i>
+                     <i class="ri-twitter-x-line"></i>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <p>© 2025 Readify Made by <span>Nirushan</span></p>
+            </div>
+         </footer>
+
+      <!--Swiper JS-->
+      <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+
+      <!--Main JS-->
+      <script src="javascript/pages/main.js"></script>
+
+      <!--Script JS-->
+      <script src="javascript/pages/script.js"></script>
+   </body>
+</html>

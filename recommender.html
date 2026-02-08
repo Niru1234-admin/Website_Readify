@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+         <!--favicon-->
+         <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/mini_logo.png">
+         <!--remix icons-->
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css">
+
+         <!--swiper css-->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+
+         <!-- other css -->
+         <link rel="stylesheet" href="css/reset.css">
+         <link rel="stylesheet" href="css/styles.css">
+
+      <title>Readify Website</title>
+   </head>
+   <body>
+
+      <!-- HEADER-->
+      <header class="header">
+         <div class="nav_container">
+            <a href="index.html" class="nav_logo">
+               <img src="assets/logo/big_logo.png" alt="logo" class="logo">
+               <span class="logo_text">Readify</span>
+            </a>
+
+            <nav class="nav_menu" id="nav_menu">
+               <ul class="menu_list">
+                  <li class="nav_item"><a href="index.html" class="menu_link">Home</a></li>
+                  <li class="nav_item"><a href="explorer.html" class="menu_link">Explorer</a></li>
+                  <li class="nav_item"><a href="recommender.html" class="menu_link">Recommender</a></li>
+                  <li class="nav_item"><a href="flow.html" class="menu_link">Flow</a></li>
+                  <li class="nav_item"><a href="tracker.html" class="menu_link">Tracker</a></li>
+                  <li class="nav_item"><a href="games.html" class="menu_link">Games</a></li>
+                  <li class="nav_item"><a href="feedback.html" class="menu_link">Feedback</a></li>
+                  <span class="nav-indicator"></span>
+               </ul>
+            </nav>
+
+            <div class="nav_icons">
+               <i class="ri-user-line"></i>
+               <i class="ri-moon-line"></i>
+            </div>
+
+            
+            <div class="hamburger" id="hamburger">
+                  <span class="br"></span>
+                  <span class="br"></span>
+                  <span class="br"></span>
+            </div>
+         </div>
+
+         <div class="mobile_overlay" id="mobile_overlay"></div>
+      </header>
+
+      <main class="recommender">
+
+         <!-- TOP HERO (SAME AS EXPLORER PAGE) -->
+         <section class="explorer_hero">
+            <div class="hero_content">
+               <h1 class="hero_title">Find Your Next Book</h1>
+               <p class="hero_text">
+               Choose what you feel like reading and we’ll recommend something instantly.
+               </p>
+
+               <div class="hero_features">
+               <div class="feature_item">
+                  <h3>Story Rich</h3>
+                  <p>Every book is packed with wonderful stories and lessons.</p>
+               </div>
+               <div class="feature_item">
+                  <h3>Quick Picks</h3>
+                  <p>Get a recommendation in one click.</p>
+               </div>
+               <div class="feature_item">
+                  <h3>Save & Read Later</h3>
+                  <p>Build your own reading list with one tap.</p>
+               </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- RECOMMENDER AREA -->
+         <section class="recommender_section">
+            <div class="container recommender_container">
+
+               <!-- Filters -->
+               <div class="recommender_filters">
+               <div class="filter_group">
+                  <label for="genreSelect">Genre</label>
+                  <select id="genreSelect">
+                     <option value="any">Any</option>
+                     <option value="fiction">Fiction</option>
+                     <option value="fantasy">Fantasy</option>
+                     <option value="sci-fi">Sci-Fi</option>
+                     <option value="mystery">Mystery</option>
+                     <option value="romance">Romance</option>
+                     <option value="self-help">Self-Help</option>
+                     <option value="nonfiction">Non-Fiction</option>
+                  </select>
+               </div>
+
+               <div class="filter_group">
+                  <label for="lengthSelect">Length</label>
+                  <select id="lengthSelect">
+                     <option value="any">Any</option>
+                     <option value="short">Short</option>
+                     <option value="medium">Medium</option>
+                     <option value="long">Long</option>
+                  </select>
+               </div>
+               </div>
+
+               <!-- Recommendation Card -->
+               <div class="recommendation_card" id="recommendationCard" aria-live="polite">
+               <div class="rec_left">
+                  <img id="recCover" class="rec_cover" src="assets/images/book-1.png" alt="Recommended book cover">
+               </div>
+
+               <div class="rec_right">
+                  <h2 class="rec_title" id="recTitle">Pick filters and click “Pick Again”</h2>
+                  <p class="rec_meta" id="recMeta">Genre: — • Length: —</p>
+                  <p class="rec_desc" id="recDesc">
+                     We’ll randomly suggest a book from the stored collection based on your choices.
+                  </p>
+
+                  <div class="rec_actions">
+                     <button class="button rec_pick" id="pickAgainBtn" type="button">
+                     <span class="btn_icon">🎲</span> Pick Again
+                     </button>
+
+                     <button class="button rec_save" id="saveBtn" type="button" disabled>
+                     <span class="btn_icon">💾</span> Save to Reading List
+                     </button>
+                  </div>
+
+                  <p class="rec_hint" id="recHint"></p>
+               </div>
+               </div>
+
+               <!-- Reading List -->
+               <div class="reading_list_card">
+               <h3 class="reading_list_title">Your Reading List</h3>
+               <p class="reading_list_empty" id="readingEmpty">
+                  No saved progress yet. Start tracking your reading!
+               </p>
+
+               <ul class="reading_list" id="readingList"></ul>
+               </div>
+
+            </div>
+         </section>
+
+      </main>
+    
+      <!--LOGIN-->
+      <div class="login" id="login_content">
+         <div class="login_overlay"></div> 
+         <div class="login_modal">
+            <i class="ri-close-line login_close"></i> 
+            <h2 class="login_title">Login</h2>
+            <form class="login_form">
+               <div class="form_group">
+                  <label for="username">Email</label>
+                  <input type="text" id="username" placeholder="Enter your username or email" required>
+               </div>
+               <div class="form_group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" placeholder="Enter your password" required>
+               </div>
+               <button type="submit" class="login_btn">Login</button>
+               <p class="login_footer">Don't have an account? <a href="#">Sign up</a></p>
+            </form>
+         </div>
+      </div>
+
+      <footer class="footer">
+            <div class="footer_container">
+
+               <div class="footer_column">
+                  <h3>Subscribe Newsletter</h3>
+                  <p>
+                     Subscribe for the newsletter for more book recommendations,
+                     daily challenges and offers.
+                  </p>
+
+                  <form class="newsletter_form">
+                     <input type="email" placeholder="Enter email" required>
+                     <button type="submit">Subscribe Now</button>
+                  </form>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Links</h3>
+                  <ul>
+                     <li><a href="#">Privacy Policy</a></li>
+                     <li><a href="#">Terms & Conditions</a></li>
+                     <li><a href="#">Customer Support</a></li>
+                     <li><a href="#">FAQ's</a></li>
+                  </ul>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Resources</h3>
+                  <ul>
+                     <li><a href="#">Reading plans</a></li>
+                     <li><a href="#">E-Library</a></li>
+                     <li><a href="#">Blog articles</a></li>
+                     <li><a href="#">Book stores</a></li>
+                  </ul>
+               </div>
+
+               <div class="footer_column">
+                  <h3>Contact us</h3>
+                  <ul class="contact_list">
+                     <li>
+                        <i class="ri-map-pin-line"></i>
+                        18/2, Ambesevanagama, Kengallla.
+                     </li>
+                     <li>
+                        <i class="ri-phone-line"></i>
+                        0761143396
+                     </li>
+                     <li>
+                        <i class="ri-phone-line"></i>
+                        nirushansivaraja@gmail.com
+                     </li>
+                  </ul>
+                  <div class="socials">
+                     <i class="ri-facebook-fill"></i>
+                     <i class="ri-instagram-line"></i>
+                     <i class="ri-twitter-x-line"></i>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <p>© 2025 Readify Made by <span>Nirushan</span></p>
+            </div>
+         </footer>
+         
+      <!-- Recommender JS -->
+      <script src="javascript/pages/recommender.js"></script>
+
+      <!--Swiper JS-->
+      <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+
+      <!--Main JS-->
+      <script src="javascript/pages/main.js"></script>
+
+      <!--Script JS-->
+      <script src="javascript/pages/script.js"></script>
+
+      <script src="javascript/pages/books.js"></script>
+   </body>
+</html>
+
