@@ -1,4 +1,4 @@
-const CACHE_NAME = "readify-v1.0.3";
+const CACHE_NAME = "readify-v1.0.4";
 
 // Core HTML and CSS files needed for offline shell loading.
 const CORE_ASSETS = [
@@ -35,59 +35,30 @@ const JS_FILES = [
   "./javascript/index.js"
 ];
 
-// Static images used throughout the app UI.
-const IMAGES= [
-  "./assets/books/book1.jpg",
-  "./assets/books/book2.jpg",
-  "./assets/books/book3.jpg",
-  "./assets/books/book4.jpg",
-  "./assets/books/book5.jpg",
-  "./assets/books/book6.jpg",
-  "./assets/books/book7.jpg",
-  "./assets/books/book8.jpg",
-  "./assets/books/book9.jpg",
-  "./assets/books/book10.jpg",
-  "./assets/books/book11.jpg",
-  "./assets/books/book12.jpg",
-  "./assets/author/author1.jpg",
-  "./assets/author/author2.jpg",
-  "./assets/author/author3.jpg",
-  "./assets/author/author4.jpg",
-  "./assets/author/author5.jpg",
-  "./assets/logo/big_logo.png"
-];
+const PRECACHE = [...CORE_ASSETS, ...JS_FILES];
 
-// Single list used during install caching.
-const ASSETS_TO_CACHE = [...CORE_ASSETS, ...JS_FILES, ...IMAGES];
+const toScopedUrl = (p) => new URL(p, self.registration.scope).toString();
 
-// Pre-cache required assets during service worker install.
 self.addEventListener("install", (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
 
-    for (const url of ASSETS_TO_CACHE) {
-      try {
-        await cache.add(url);
-      } catch (err) {
-        console.error("Failed to cache:", url, err);
-      }
-    }
+    const scopedList = PRECACHE.map(toScopedUrl);
 
-    self.skipWaiting();
+    await cache.addAll(scopedList);
+
+    await self.skipWaiting();
   })());
 });
 
-// Remove old cache versions when activating a new worker.
 self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.map((key) => (key !== CACHE_NAME ? caches.delete(key) : null)))
-    )
-  );
-  self.clients.claim();
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.map((key) => (key !== CACHE_NAME ? caches.delete(key) : null)));
+    await self.clients.claim();
+  })());
 });
 
-// Serve cached content first/with fallback depending on request type.
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
@@ -103,60 +74,67 @@ self.addEventListener("fetch", (event) => {
     /\.css$/i.test(url.pathname) ||
     /\.js$/i.test(url.pathname);
 
+  // HTML: network-first, fallback to cached shell
   if (isHTML) {
-    event.respondWith(
-      fetch(req)
-        .then((res) => {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
-          return res;
-        })
-        .catch(() => caches.match(req).then((c) => c || caches.match("./")))
-    );
+    event.respondWith((async () => {
+      try {
+        const res = await fetch(req);
+        const cache = await caches.open(CACHE_NAME);
+        cache.put(req, res.clone());
+        return res;
+      } catch {
+        const cached = await caches.match(req);
+        return cached || caches.match(toScopedUrl("./index.html"));
+      }
+    })());
     return;
   }
 
+  // Images: cache-first 
   if (isImage) {
-    event.respondWith(
-      caches.match(req).then((cached) => {
-        if (cached) return cached;
-
-        return fetch(req)
-          .then((res) => {
-            const clone = res.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
-            return res;
-          })
-          .catch(() => caches.match("./android-chrome-192x192.png"));
-      })
-    );
-    return;
-  }
-
-  if (isStyleOrScript) {
-    event.respondWith(
-      fetch(req, { cache: "no-store" })
-        .then((res) => {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
-          return res;
-        })
-        .catch(() => caches.match(req))
-    );
-    return;
-  }
-
-  event.respondWith(
-    caches.match(req).then((cached) => {
+    event.respondWith((async () => {
+      const cached = await caches.match(req);
       if (cached) return cached;
 
-      return fetch(req)
-        .then((res) => {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
-          return res;
-        })
-        .catch(() => caches.match("./index.html"));
-    })
-  );
+      try {
+        const res = await fetch(req);
+        const cache = await caches.open(CACHE_NAME);
+        cache.put(req, res.clone());
+        return res;
+      } catch {
+        return caches.match(toScopedUrl("./android-chrome-192x192.png"));
+      }
+    })());
+    return;
+  }
+
+  // Network-first (keeps updates), fallback to cache
+  if (isStyleOrScript) {
+    event.respondWith((async () => {
+      try {
+        const res = await fetch(req, { cache: "no-store" });
+        const cache = await caches.open(CACHE_NAME);
+        cache.put(req, res.clone());
+        return res;
+      } catch {
+        return caches.match(req);
+      }
+    })());
+    return;
+  }
+
+  // Default: cache-first then network
+  event.respondWith((async () => {
+    const cached = await caches.match(req);
+    if (cached) return cached;
+
+    try {
+      const res = await fetch(req);
+      const cache = await caches.open(CACHE_NAME);
+      cache.put(req, res.clone());
+      return res;
+    } catch {
+      return caches.match(toScopedUrl("./index.html"));
+    }
+  })());
 });
