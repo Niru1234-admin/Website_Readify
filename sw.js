@@ -1,4 +1,4 @@
-const CACHE_NAME = "readify-v1.0.5";
+const CACHE_NAME = "readify-v1.0.6";
 
 /* Core app shell files */
 const CORE_ASSETS = [
@@ -37,23 +37,23 @@ const JS_FILES = [
 
 /* Images used across the app */
 const IMAGES = [
-  "./assets/books/book1.jpg",
-  "./assets/books/book2.jpg",
-  "./assets/books/book3.jpg",
-  "./assets/books/book4.jpg",
-  "./assets/books/book5.jpg",
-  "./assets/books/book6.jpg",
-  "./assets/books/book7.jpg",
-  "./assets/books/book8.jpg",
-  "./assets/books/book9.jpg",
-  "./assets/books/book10.jpg",
-  "./assets/books/book11.jpg",
-  "./assets/books/book12.jpg",
-  "./assets/author/author1.jpg",
-  "./assets/author/author2.jpg",
-  "./assets/author/author3.jpg",
-  "./assets/author/author4.jpg",
-  "./assets/author/author5.jpg",
+  "./assets/books/book1.webp",
+  "./assets/books/book2.webp",
+  "./assets/books/book3.webp",
+  "./assets/books/book4.webp",
+  "./assets/books/book5.webp",
+  "./assets/books/book6.webp",
+  "./assets/books/book7.webp",
+  "./assets/books/book8.webp",
+  "./assets/books/book9.webp",
+  "./assets/books/book10.webp",
+  "./assets/books/book11.webp",
+  "./assets/books/book12.webp",
+  "./assets/author/author1.webp",
+  "./assets/author/author2.webp",
+  "./assets/author/author3.webp",
+  "./assets/author/author4.webp",
+  "./assets/author/author5.webp",
   "./assets/logo/big_logo.webp"
 ];
 

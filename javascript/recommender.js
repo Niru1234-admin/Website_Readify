@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "Paulo Coelho",
       genre: "Fiction",
       length: "Short",
-      cover: "assets/books/book1.jpg",
+      cover: "assets/books/book1.webp",
       description: "A philosophical story about following dreams and finding purpose."
     },
     {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "Khaled Hosseini",
       genre: "Fiction",
       length: "Long",
-      cover: "assets/books/book2.jpg",
+      cover: "assets/books/book2.webp",
       description: "A powerful novel about friendship, guilt, and redemption."
     },
     {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "Antoine de Saint-Exupéry",
       genre: "Fiction",
       length: "Short",
-      cover: "assets/books/book3.jpg",
+      cover: "assets/books/book3.webp",
       description: "A poetic tale exploring love, innocence, and human nature."
     },
     {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "James Clear",
       genre: "Non-Fiction",
       length: "Medium",
-      cover: "assets/books/book4.jpg",
+      cover: "assets/books/book4.webp",
       description: "A practical guide to building good habits through small changes."
     },
     {
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "Robert T. Kiyosaki",
       genre: "Non-Fiction",
       length: "Medium",
-      cover: "assets/books/book5.jpg",
+      cover: "assets/books/book5.webp",
       description: "Lessons on money, mindset, and financial independence."
     },
     {
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "Viktor E. Frankl",
       genre: "Non-Fiction",
       length: "Short",
-      cover: "assets/books/book6.jpg",
+      cover: "assets/books/book6.webp",
       description: "A deeply moving reflection on purpose, suffering, and resilience."
     },
     {
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "J.K. Rowling",
       genre: "Fantasy",
       length: "Long",
-      cover: "assets/books/book7.jpg",
+      cover: "assets/books/book7.webp",
       description: "The beginning of a magical journey at Hogwarts School of Witchcraft and Wizardry."
     },
     {
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "J.R.R. Tolkien",
       genre: "Fantasy",
       length: "Long",
-      cover: "assets/books/book8.jpg",
+      cover: "assets/books/book8.webp",
       description: "A classic fantasy adventure about courage, dragons, and unexpected journeys."
     },
     {
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "Lewis Carroll",
       genre: "Fantasy",
       length: "Short",
-      cover: "assets/books/book9.jpg",
+      cover: "assets/books/book9.webp",
       description: "A whimsical story full of imagination, logic, and curious characters."
     },
     {
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "Frank Herbert",
       genre: "Sci-Fi",
       length: "Long",
-      cover: "assets/books/book10.jpg",
+      cover: "assets/books/book10.webp",
       description: "An epic science fiction story about power, survival, and destiny."
     },
     {
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "Orson Scott Card",
       genre: "Sci-Fi",
       length: "Medium",
-      cover: "assets/books/book11.jpg",
+      cover: "assets/books/book11.webp",
       description: "A sci-fi novel focused on strategy, leadership, and moral dilemmas."
     },
     {
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       author: "William Gibson",
       genre: "Sci-Fi",
       length: "Medium",
-      cover: "assets/books/book12.jpg",
+      cover: "assets/books/book12.webp",
       description: "A cyberpunk classic exploring hackers, AI, and digital identity."
     }
   ];

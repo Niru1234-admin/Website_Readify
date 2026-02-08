@@ -5,7 +5,7 @@ window.BOOKS_DATA = [
     title: "The Alchemist",
     author: "Paulo Coelho",
     category: "Fiction",
-    image: "assets/books/book1.jpg",
+    image: "assets/books/book1.webp",
     description: "A spiritual story about following one’s dreams.",
     summary:
       "A young shepherd travels in search of treasure and discovers deeper truths about destiny, purpose, and self-belief.",
@@ -25,7 +25,7 @@ window.BOOKS_DATA = [
     title: "The Kite Runner",
     author: "Khaled Hosseini",
     category: "Fiction",
-    image: "assets/books/book2.jpg",
+    image: "assets/books/book2.webp",
     description: "A powerful story of friendship and redemption.",
     summary:
       "Set in Afghanistan, the novel follows Amir as he confronts guilt, betrayal, and the search for forgiveness.",
@@ -45,7 +45,7 @@ window.BOOKS_DATA = [
     title: "The Little Prince",
     author: "Antoine de Saint-Exupéry",
     category: "Fiction",
-    image: "assets/books/book3.jpg",
+    image: "assets/books/book3.webp",
     description: "A poetic and philosophical tale for all ages.",
     summary:
       "Through the eyes of a young prince, the story explores love, innocence, and the meaning of life.",
@@ -65,7 +65,7 @@ window.BOOKS_DATA = [
     title: "Atomic Habits",
     author: "James Clear",
     category: "Non-Fiction",
-    image: "assets/books/book4.jpg",
+    image: "assets/books/book4.webp",
     description: "A guide to building better habits through small changes.",
     summary:
       "The book explains how tiny daily habits can lead to massive long-term improvement.",
@@ -85,7 +85,7 @@ window.BOOKS_DATA = [
     title: "Rich Dad Poor Dad",
     author: "Robert T. Kiyosaki",
     category: "Non-Fiction",
-    image: "assets/books/book5.jpg",
+    image: "assets/books/book5.webp",
     description: "A lesson-based book on money and mindset.",
     summary:
       "Contrasts two views on wealth and teaches financial literacy, investing, and independence.",
@@ -105,7 +105,7 @@ window.BOOKS_DATA = [
     title: "Man's Search for Meaning",
     author: "Viktor E. Frankl",
     category: "Non-Fiction",
-    image: "assets/books/book6.jpg",
+    image: "assets/books/book6.webp",
     description: "A profound reflection on purpose and resilience.",
     summary:
       "Based on real experiences in concentration camps, the book explores how meaning sustains life.",
@@ -125,7 +125,7 @@ window.BOOKS_DATA = [
     title: "Harry Potter and the Sorcerer's Stone",
     author: "J.K. Rowling",
     category: "Fantasy",
-    image: "assets/books/book7.jpg",
+    image: "assets/books/book7.webp",
     description: "The beginning of a magical fantasy journey.",
     summary:
       "Harry discovers he is a wizard and begins his education at Hogwarts School of Witchcraft and Wizardry.",
@@ -145,7 +145,7 @@ window.BOOKS_DATA = [
     title: "The Hobbit",
     author: "J.R.R. Tolkien",
     category: "Fantasy",
-    image: "assets/books/book8.jpg",
+    image: "assets/books/book8.webp",
     description: "A classic fantasy adventure.",
     summary:
       "Bilbo Baggins is swept into an unexpected journey filled with danger, courage, and discovery.",
@@ -165,7 +165,7 @@ window.BOOKS_DATA = [
     title: "Alice in Wonderland",
     author: "Lewis Carroll",
     category: "Fantasy",
-    image: "assets/books/book9.jpg",
+    image: "assets/books/book9.webp",
     description: "A whimsical and imaginative fantasy story.",
     summary:
       "Alice enters a strange world filled with curious characters and surreal logic.",
@@ -185,7 +185,7 @@ window.BOOKS_DATA = [
     title: "Dune",
     author: "Frank Herbert",
     category: "Sci-Fi",
-    image: "assets/books/book10.jpg",
+    image: "assets/books/book10.webp",
     description: "A science fiction epic of power and destiny.",
     summary:
       "Set on the desert planet Arrakis, the story explores politics, ecology, and leadership.",
@@ -205,7 +205,7 @@ window.BOOKS_DATA = [
     title: "Ender's Game",
     author: "Orson Scott Card",
     category: "Sci-Fi",
-    image: "assets/books/book11.jpg",
+    image: "assets/books/book11.webp",
     description: "A sci-fi novel about strategy and leadership.",
     summary:
       "A gifted child is trained to defend humanity, facing intense moral challenges.",
@@ -225,7 +225,7 @@ window.BOOKS_DATA = [
     title: "Neuromancer",
     author: "William Gibson",
     category: "Sci-Fi",
-    image: "assets/books/book12.jpg",
+    image: "assets/books/book12.webp",
     description: "A foundational cyberpunk science fiction novel.",
     summary:
       "The story follows a hacker navigating a high-tech world of artificial intelligence and cyberspace.",
