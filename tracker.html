@@ -49,7 +49,6 @@
                   <li class="nav_item"><a href="tracker.html" class="menu_link">Tracker</a></li>
                   <li class="nav_item"><a href="games.html" class="menu_link">Games</a></li>
                   <li class="nav_item"><a href="feedback.html" class="menu_link">Feedback</a></li>
-                  <span class="nav-indicator"></span>
                </ul>
             </nav>
 
@@ -79,15 +78,15 @@
 
                   <div class="hero_features">
                   <div class="feature_item">
-                        <h3>Reading Progress</h3>
-                        <p>Every book is packed with wonderful stories and lessons.</p>
+                     <h2>Reading Progress</h2>
+                     <p>Every book is packed with wonderful stories and lessons.</p>
                   </div>
                   <div class="feature_item">
-                     <h3>Instant Results</h3>
+                     <h2>Instant Results</h2>
                      <p>Get clear stats like total reading time and completion percentage.</p>
                   </div>
                   <div class="feature_item">
-                     <h3>Completed Books</h3>
+                     <h2>Completed Books</h2>
                      <p>Save finished books and build a personal reading record.</p>
                   </div>
                   </div>
@@ -116,17 +115,17 @@
 
                         <div class="tracker_group">
                            <label for="totalPages">Total Pages</label>
-                           <input id="totalPages" type="number" min="1" step="1" placeholder="e.g., 300" required />
+                           <input id="totalPages" type="number" min="1" step="1" placeholder="e.g., 300" required>
                         </div>
 
                         <div class="tracker_group">
                            <label for="pagesRead">Pages Read</label>
-                           <input id="pagesRead" type="number" min="0" step="1" placeholder="e.g., 120" required />
+                           <input id="pagesRead" type="number" min="0" step="1" placeholder="e.g., 120" required>
                         </div>
 
                         <div class="tracker_group tracker_full">
                            <label for="speed">Reading Speed (pages/day)</label>
-                           <input id="speed" type="number" min="1" step="1" placeholder="e.g., 25" required />
+                           <input id="speed" type="number" min="1" step="1" placeholder="e.g., 25" required>
                            <small class="tracker_hint">Tip: If you read 20 pages daily, enter 20.</small>
                         </div>
 
@@ -164,7 +163,7 @@
                         </div>
                      </div>
 
-                     <div class="tracker_progress_wrap" aria-label="Progress bar">
+                     <div class="tracker_progress_wrap" role="group" aria-label="Progress bar">
                         <div class="tracker_progress_bar">
                         <div class="tracker_progress_fill" id="progressFill"></div>
                         </div>
@@ -236,9 +235,11 @@
                      daily challenges and offers.
                   </p>
 
-                  <form class="newsletter_form">
-                     <input type="email" placeholder="Enter email" required>
-                     <button type="submit">Subscribe Now</button>
+                  <form class="newsletter_form" autocomplete="on">
+                     <label for="newsletter_email" class="sr-only">Email address</label>
+                        <input type="email" id="newsletter_email" name="newsletter_email"
+                              placeholder="Enter your email" autocomplete="email" required>
+                        <button type="submit">Subscribe Now</button>
                   </form>
                </div>
 

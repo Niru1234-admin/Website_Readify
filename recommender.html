@@ -50,7 +50,6 @@
                   <li class="nav_item"><a href="tracker.html" class="menu_link">Tracker</a></li>
                   <li class="nav_item"><a href="games.html" class="menu_link">Games</a></li>
                   <li class="nav_item"><a href="feedback.html" class="menu_link">Feedback</a></li>
-                  <span class="nav-indicator"></span>
                </ul>
             </nav>
 
@@ -82,15 +81,15 @@
 
                <div class="hero_features">
                <div class="feature_item">
-                  <h3>Story Rich</h3>
+                  <h2>Story Rich</h2>
                   <p>Every book is packed with wonderful stories and lessons.</p>
                </div>
                <div class="feature_item">
-                  <h3>Quick Picks</h3>
+                  <h2>Quick Picks</h2>
                   <p>Get a recommendation in one click.</p>
                </div>
                <div class="feature_item">
-                  <h3>Save & Read Later</h3>
+                  <h2>Save & Read Later</h2>
                   <p>Build your own reading list with one tap.</p>
                </div>
                </div>
@@ -202,9 +201,11 @@
                      daily challenges and offers.
                   </p>
 
-                  <form class="newsletter_form">
-                     <input type="email" placeholder="Enter email" required>
-                     <button type="submit">Subscribe Now</button>
+                  <form class="newsletter_form" autocomplete="on">
+                     <label for="newsletter_email" class="sr-only">Email address</label>
+                        <input type="email" id="newsletter_email" name="newsletter_email"
+                              placeholder="Enter your email" autocomplete="email" required>
+                        <button type="submit">Subscribe Now</button>
                   </form>
                </div>
 

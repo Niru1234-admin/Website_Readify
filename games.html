@@ -51,7 +51,6 @@
                   <li class="nav_item"><a href="tracker.html" class="menu_link">Tracker</a></li>
                   <li class="nav_item"><a href="games.html" class="menu_link">Games</a></li>
                   <li class="nav_item"><a href="feedback.html" class="menu_link">Feedback</a></li>
-                  <span class="nav-indicator"></span>
                </ul>
             </nav>
 
@@ -81,15 +80,15 @@
 
                   <div class="hero_features">
                   <div class="feature_item">
-                     <h3>Memory Game</h3>
+                     <h2>Memory Game</h2>
                      <p>Flip cards, match pairs, beat your best time.</p>
                   </div>
                   <div class="feature_item">
-                     <h3>Writing Speed</h3>
+                     <h2>Writing Speed</h2>
                      <p>Test your WPM and accuracy with a quick challenge.</p>
                   </div>
                   <div class="feature_item">
-                     <h3>Quick & Fun</h3>
+                     <h2>Quick & Fun</h2>
                      <p>Play anytime — no setup, no stress, just focus and fun.</p>
                   </div>
                   </div>
@@ -108,22 +107,22 @@
                   <div class="games_grid">
                      <!-- Game Card 1 -->
                      <button class="game_card" type="button" data-game="memory">
-                     <div class="game_icon"><i class="ri-brain-line"></i></div>
-                     <div class="game_text">
-                        <h3>Memory Match</h3>
-                        <p>Flip cards, match pairs, beat your best time.</p>
-                     </div>
-                     <span class="game_tag">Play</span>
+                        <span class="game_icon" aria-hidden="true"><i class="ri-brain-line"></i></span>
+                        <span class="game_text">
+                           <span class="game_name">Memory Match</span>
+                           <span class="game_desc">Flip cards, match pairs, beat your best time.</span>
+                        </span>
+                        <span class="game_tag">Play</span>
                      </button>
 
                      <!-- Game Card 2 (later) -->
                      <button class="game_card" type="button" data-game="typing">
-                        <div class="game_icon"><i class="ri-keyboard-line"></i></div>
-                        <div class="game_text">
-                           <h3>Typing Speed</h3>
-                           <p>Test your WPM and accuracy with a quick challenge.</p>
-                        </div>
-                        <span class="game_tag">Play</span>
+                     <span class="game_icon" aria-hidden="true"><i class="ri-keyboard-line"></i></span>
+                     <span class="game_text">
+                        <span class="game_name">Typing Speed</span>
+                        <span class="game_desc">Test your WPM and accuracy with a quick challenge.</span>
+                     </span>
+                     <span class="game_tag">Play</span>
                      </button>
                   </div>
                </div>
@@ -184,9 +183,11 @@
                      daily challenges and offers.
                   </p>
 
-                  <form class="newsletter_form">
-                     <input type="email" placeholder="Enter email" required>
-                     <button type="submit">Subscribe Now</button>
+                  <form class="newsletter_form" autocomplete="on">
+                     <label for="newsletter_email" class="sr-only">Email address</label>
+                        <input type="email" id="newsletter_email" name="newsletter_email"
+                              placeholder="Enter your email" autocomplete="email" required>
+                        <button type="submit">Subscribe Now</button>
                   </form>
                </div>
 

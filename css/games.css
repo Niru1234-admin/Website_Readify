@@ -101,13 +101,15 @@
   min-width: 0;
 }
 
-.game_text h3{
+.game_name{
+  display: block;
   font-size: 1.1rem;
   font-weight: 900;
   margin-bottom: 0.2rem;
 }
 
-.game_text p{
+.game_desc{
+  display: block;
   color: var(--text-light);
   line-height: 1.55;
   font-size: 0.92rem;

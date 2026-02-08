@@ -49,7 +49,6 @@
                   <li class="nav_item"><a href="tracker.html" class="menu_link">Tracker</a></li>
                   <li class="nav_item"><a href="games.html" class="menu_link">Games</a></li>
                   <li class="nav_item"><a href="feedback.html" class="menu_link">Feedback</a></li>
-                  <span class="nav-indicator"></span>
                </ul>
             </nav>
 
@@ -79,15 +78,15 @@
 
                   <div class="hero_features">
                   <div class="feature_item">
-                     <h3>Ambient Sounds</h3>
+                     <h2>Ambient Sounds</h2>
                      <p>Pick rain, forest, or cafe vibes to stay focused while you read.</p>
                   </div>
                   <div class="feature_item">
-                     <h3>Reading Tracker</h3>
+                     <h2>Reading Tracker</h2>
                      <p>Track your reading sessions and see your progress over time.</p>
                   </div>
                   <div class="feature_item">
-                     <h3>Completed Books</h3>
+                     <h2>Completed Books</h2>
                      <p>Add finished books and build your personal reading history.</p>
                   </div>
                   </div>
@@ -106,7 +105,7 @@
                   <p class="sound_subtitle">Stay Focused</p>
                   <h2 class="sound_title">Ambient Sounds</h2>
 
-                  <div class="sound_buttons" aria-label="Sound buttons">
+                  <div class="sound_buttons" role="group" aria-label="Sound buttons">
                      <button class="sound_btn" data-sound="rain" type="button">Rain</button>
                      <button class="sound_btn" data-sound="ocean" type="button">Ocean</button>
                      <button class="sound_btn" data-sound="forest" type="button">Forest</button>
@@ -148,9 +147,12 @@
 
                      <!-- Search -->
                      <div class="completed_search_row">
-                     <i class="ri-search-line" aria-hidden="true"></i>
-                     <input id="completedSearch" class="completed_search" type="text" placeholder="Search completed books..." autocomplete="off">
+                        <i class="ri-search-line" aria-hidden="true"></i>
+                        <label class="sr-only" for="completedSearch">Search completed books</label>
+                        <input id="completedSearch" class="completed_search" type="text"
+                                 placeholder="Search completed books..." autocomplete="off">
                      </div>
+
 
                      <!-- Add form -->
                      <form id="completedForm" class="completed_form">
@@ -165,8 +167,9 @@
 
                            <div class="book_select_menu" id="bookSelectMenu" role="listbox" aria-label="Books">
                               <div class="book_select_search_row">
-                              <i class="ri-search-line" aria-hidden="true"></i>
-                              <input id="bookSelectSearch" class="book_select_search" type="text" placeholder="Search books..." autocomplete="off">
+                                 <i class="ri-search-line" aria-hidden="true"></i>
+                                 <label class="sr-only" for="bookSelectSearch">Search books</label>
+                                 <input id="bookSelectSearch" class="book_select_search" type="text" placeholder="Search books..." autocomplete="off">
                               </div>
 
                               <ul class="book_select_list" id="bookSelectList"></ul>
@@ -174,7 +177,7 @@
                               <p class="book_select_empty" id="bookSelectEmpty" style="display:none;">No matches</p>
                            </div>
                            
-                           <input type="hidden" id="bookTitleInput" required>
+                           <input type="hidden" id="bookTitleInput">
                         </div>
 
                         <button class="button" type="submit">Add</button>
@@ -220,9 +223,11 @@
                      daily challenges and offers.
                   </p>
 
-                  <form class="newsletter_form">
-                     <input type="email" placeholder="Enter email" required>
-                     <button type="submit">Subscribe Now</button>
+                  <form class="newsletter_form" autocomplete="on">
+                     <label for="newsletter_email" class="sr-only">Email address</label>
+                        <input type="email" id="newsletter_email" name="newsletter_email"
+                              placeholder="Enter your email" autocomplete="email" required>
+                        <button type="submit">Subscribe Now</button>
                   </form>
                </div>
 

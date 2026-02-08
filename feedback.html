@@ -49,7 +49,6 @@
                   <li class="nav_item"><a href="tracker.html" class="menu_link">Tracker</a></li>
                   <li class="nav_item"><a href="games.html" class="menu_link">Games</a></li>
                   <li class="nav_item"><a href="feedback.html" class="menu_link">Feedback</a></li>
-                  <span class="nav-indicator"></span>
                </ul>
             </nav>
 
@@ -79,15 +78,15 @@
 
                   <div class="hero_features">
                   <div class="feature_item">
-                     <h3>Quick & Easy</h3>
+                     <h2>Quick & Easy</h2>
                      <p>Send feedback in under a minute.</p>
                   </div>
                   <div class="feature_item">
-                     <h3>Report Issues</h3>
+                     <h2>Report Issues</h2>
                      <p>Found a bug or something not working? Tell us what happened.</p>
                   </div>
                   <div class="feature_item">
-                     <h3>Suggest Features</h3>
+                     <h2>Suggest Features</h2>
                      <p>Recommend new ideas to make reading better for everyone.</p>
                   </div>
                   </div>
@@ -106,13 +105,13 @@
 
                            <div class="feedback_group">
                               <label for="fbName">Name <span class="req">*</span></label>
-                              <input type="text" id="fbName" name="name" placeholder="Your full name" />
+                              <input type="text" id="fbName" name="name" placeholder="Your full name">
                               <small class="feedback_error" id="errName"></small>
                            </div>
 
                            <div class="feedback_group">
                               <label for="fbEmail">Email <span class="req">*</span></label>
-                              <input type="email" id="fbEmail" name="email" placeholder="you@example.com" />
+                              <input type="email" id="fbEmail" name="email" placeholder="you@example.com">
                               <small class="feedback_error" id="errEmail"></small>
                            </div>
 
@@ -206,9 +205,11 @@
                      daily challenges and offers.
                   </p>
 
-                  <form class="newsletter_form">
-                     <input type="email" placeholder="Enter email" required>
-                     <button type="submit">Subscribe Now</button>
+                  <form class="newsletter_form" autocomplete="on">
+                     <label for="newsletter_email" class="sr-only">Email address</label>
+                        <input type="email" id="newsletter_email" name="newsletter_email"
+                              placeholder="Enter your email" autocomplete="email" required>
+                        <button type="submit">Subscribe Now</button>
                   </form>
                </div>
 

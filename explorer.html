@@ -49,7 +49,6 @@
                   <li class="nav_item"><a href="tracker.html" class="menu_link">Tracker</a></li>
                   <li class="nav_item"><a href="games.html" class="menu_link">Games</a></li>
                   <li class="nav_item"><a href="feedback.html" class="menu_link">Feedback</a></li>
-                  <span class="nav-indicator"></span>
                </ul>
             </nav>
 
@@ -79,17 +78,17 @@
 
                <div class="hero_features">
                <div class="feature_item">
-                  <h3>Story Rich</h3>
+                  <h2>Story Rich</h2>
                   <p>Every book is packed with wonderful stories and lessons.</p>
                </div>
 
                <div class="feature_item">
-                  <h3>Quick Reads</h3>
+                  <h2>Quick Reads</h2>
                   <p>Most books can be read in under 30 minutes.</p>
                </div>
 
                <div class="feature_item">
-                  <h3>Child Friendly</h3>
+                  <h2>Child Friendly</h2>
                   <p>Books are suitable for all ages.</p>
                </div>
                </div>
@@ -151,7 +150,7 @@
 
                      <div class="modal_rating">
                         <div>
-                           <div class="stars" id="modal_stars" aria-label="rating stars"></div>
+                           <div class="stars" id="modal_stars" role="img" aria-label="Rating stars"></div>
                            <span class="rating_text" id="modal_rating_text">4.9 / 5</span>
                            <span class="rating_count" id="modal_rating_count">(0 ratings)</span>
                         </div>
@@ -228,9 +227,11 @@
                      daily challenges and offers.
                   </p>
 
-                  <form class="newsletter_form">
-                     <input type="email" placeholder="Enter email" required>
-                     <button type="submit">Subscribe Now</button>
+                  <form class="newsletter_form" autocomplete="on">
+                     <label for="newsletter_email" class="sr-only">Email address</label>
+                        <input type="email" id="newsletter_email" name="newsletter_email"
+                              placeholder="Enter your email" autocomplete="email" required>
+                        <button type="submit">Subscribe Now</button>
                   </form>
                </div>
 
