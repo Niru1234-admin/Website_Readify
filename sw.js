@@ -1,4 +1,4 @@
-const CACHE_NAME = "readify-v1.0.1";
+const CACHE_NAME = "readify-v1.0.2";
 
 const CORE_ASSETS = [
   "./",
@@ -32,14 +32,46 @@ const JS_FILES = [
   "./javascript/script.js"
 ];
 
-const ASSETS_TO_CACHE = [...CORE_ASSETS, ...JS_FILES];
+const IMAGES= [
+  "./assets/books/book1.jpg",
+  "./assets/books/book2.jpg",
+  "./assets/books/book3.jpg",
+  "./assets/books/book4.jpg",
+  "./assets/books/book5.jpg",
+  "./assets/books/book6.jpg",
+  "./assets/books/book7.jpg",
+  "./assets/books/book8.jpg",
+  "./assets/books/book9.jpg",
+  "./assets/books/book10.jpg",
+  "./assets/books/book11.jpg",
+  "./assets/books/book12.jpg",
+  "./assets/author/author1.jpg",
+  "./assets/author/author2.jpg",
+  "./assets/author/author3.jpg",
+  "./assets/author/author4.jpg",
+  "./assets/author/author5.jpg",
+  "./assets/logo/big_logo.png"
+];
+
+
+const ASSETS_TO_CACHE = [...CORE_ASSETS, ...JS_FILES, ...IMAGES];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
-  );
-  self.skipWaiting();
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+
+    for (const url of ASSETS_TO_CACHE) {
+      try {
+        await cache.add(url);
+      } catch (err) {
+        console.error("Failed to cache:", url, err);
+      }
+    }
+
+    self.skipWaiting();
+  })());
 });
+
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
@@ -52,31 +84,73 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const req = event.request;
+  if (req.method !== "GET") return;
+
+  const url = new URL(req.url);
+  if (url.origin !== location.origin) return;
+
   const isHTML = req.headers.get("accept")?.includes("text/html");
+  const isImage = req.destination === "image";
+  const isStyleOrScript =
+    req.destination === "style" ||
+    req.destination === "script" ||
+    /\.css$/i.test(url.pathname) ||
+    /\.js$/i.test(url.pathname);
 
   if (isHTML) {
     event.respondWith(
       fetch(req)
         .then((res) => {
-          const resClone = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, resClone));
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
           return res;
         })
-        .catch(() => caches.match(req).then((cached) => cached || caches.match("./index.html")))
+        .catch(() => caches.match(req).then((c) => c || caches.match("./index.html")))
+    );
+    return;
+  }
+
+  if (isImage) {
+    event.respondWith(
+      caches.match(req).then((cached) => {
+        if (cached) return cached;
+
+        return fetch(req)
+          .then((res) => {
+            const clone = res.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
+            return res;
+          })
+          .catch(() => caches.match("./android-chrome-192x192.png"));
+      })
+    );
+    return;
+  }
+
+  if (isStyleOrScript) {
+    event.respondWith(
+      fetch(req, { cache: "no-store" })
+        .then((res) => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
+          return res;
+        })
+        .catch(() => caches.match(req))
     );
     return;
   }
 
   event.respondWith(
     caches.match(req).then((cached) => {
-      return (
-        cached ||
-        fetch(req).then((res) => {
-          const resClone = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, resClone));
+      if (cached) return cached;
+
+      return fetch(req)
+        .then((res) => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
           return res;
         })
-      );
+        .catch(() => caches.match("./index.html"));
     })
   );
 });

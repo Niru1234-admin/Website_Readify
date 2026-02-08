@@ -3,7 +3,9 @@
    <head>
          <meta charset="UTF-8">
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+         <meta name="mobile-web-app-capable" content="yes">
+         <meta name="apple-mobile-web-app-capable" content="yes">
+         
          <!--favicon-->
          <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
          <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -20,6 +22,13 @@
          <link rel="stylesheet" href="css/reset.css">
          <link rel="stylesheet" href="css/styles.css">
 
+         <!--PWA meta tags-->
+         <link rel="manifest" href="./manifest.json">
+         <meta name="theme-color" content="#17be20">
+         <meta name="apple-mobile-web-app-capable" content="yes">
+         <meta name="apple-mobile-web-app-status-bar-style" content="default">
+         <meta name="apple-mobile-web-app-title" content="Readify">
+         
       <title>Readify Website</title>
    </head>
    <body>
@@ -167,14 +176,15 @@
          <div class="login_modal">
             <i class="ri-close-line login_close"></i> 
             <h2 class="login_title">Login</h2>
-            <form class="login_form">
+
+            <form class="login_form" autocomplete="on">
                <div class="form_group">
-                  <label for="username">Email</label>
-                  <input type="text" id="username" placeholder="Enter your username or email" required>
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email" required>
                </div>
                <div class="form_group">
                   <label for="password">Password</label>
-                  <input type="password" id="password" placeholder="Enter your password" required>
+                  <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
                </div>
                <button type="submit" class="login_btn">Login</button>
                <p class="login_footer">Don't have an account? <a href="#">Sign up</a></p>
@@ -257,6 +267,21 @@
 
       <!-- Recommender JS -->
       <script src="javascript/recommender.js"></script>
+
+      <script>
+         if ("serviceWorker" in navigator) {
+            window.addEventListener("load", async () => {
+               try {
+                  const registration = await navigator.serviceWorker.register("./sw.js", {
+                     updateViaCache: "none"
+                  });
+                  await registration.update();
+               } catch (error) {
+                  console.error(error);
+               }
+            });
+         }
+      </script>
 
    </body>
 </html>
