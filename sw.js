@@ -1,4 +1,4 @@
-const CACHE_NAME = "readify-v1.0.5";
+const CACHE_NAME = "readify-v1.0.9";
 
 /* Core app shell files */
 const CORE_ASSETS = [
