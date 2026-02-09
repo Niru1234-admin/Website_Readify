@@ -94,29 +94,6 @@ The website is hosted using **GitHub Pages**.
 
 ---
  
-## Repository Structure
 
-/Website_Readify
-│── index.html
-│── explorer.html
-│── tracker.html
-│── recommender.html
-│── flow.html
-│── feedback.html
-│
-├── css/
-│   ├── reset.css
-│   ├── styles.css
-│
-├── javascript/
-│   ├── main.js
-│   ├── explorer.js
-│   ├── tracker.js
-│
-├── assets/
-│   ├── images/
-│   ├── icons/
-│
-└── manifest.json
 
 
