@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (v.length >= 10) clearError(msgEl, errMessage);
   });
 
-  // ---------- submit ----------
   // Validates, stores, and clears feedback form on submit.
   form.addEventListener("submit", (e) => {
     e.preventDefault();

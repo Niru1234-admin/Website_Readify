@@ -155,13 +155,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Apply selected filters to the in-memory book list.
   function filterBooks() {
-    const g = genreSelect.value;
-    const l = lengthSelect.value;
+    const g = String(genreSelect.value).toLowerCase();
+    const l = String(lengthSelect.value).toLowerCase();
 
-    return BOOKS.filter(b =>
-      (g === "any" || b.genre === g) &&
-      (l === "any" || b.length === l)
-    );
+    return BOOKS.filter(b => {
+      const bg = String(b.genre).toLowerCase().replace(/[^a-z]/g, "");
+      const bl = String(b.length).toLowerCase();
+      const gg = g.replace(/[^a-z]/g, "");
+      return (g === "any" || bg === gg) && (l === "any" || bl === l);
+    });
   }
 
   // Pick one random item from a list.
@@ -201,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
       recTitle.textContent = "No match found";
       recMeta.textContent = "Try changing Genre / Length.";
       recDesc.textContent = "Your current filters have no books in the stored list.";
-      recCover.src = "assets/books/book1.jpg";
+      recCover.src = "assets/books/book1.webp";
       recHint.textContent = "";
       return;
     }

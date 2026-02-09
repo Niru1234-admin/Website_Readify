@@ -1,5 +1,4 @@
 /*Preloader*/
-// Shows loader briefly, then marks app as ready.
 window.addEventListener("load", () => {
   const preload = document.querySelector(".preload");
   const LOADER_DURATION = 3000;
@@ -13,7 +12,6 @@ window.addEventListener("load", () => {
 });
 
 /*HamBurger*/
-// Handles mobile navigation open/close interactions.
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav_menu");
@@ -64,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
 const header = document.querySelector(".header");
 
 if (header) {
-  // Adds sticky style once the page is scrolled.
   window.addEventListener("scroll", () => {
     header.classList.toggle("active", window.scrollY > 20);
   });
@@ -90,7 +87,6 @@ if (quoteSwiperEl && typeof Swiper !== "undefined") {
 /* Initialize Book Swiper */
 const bookSwiperEl = document.querySelector(".book_swiper");
 if (bookSwiperEl && typeof Swiper !== "undefined") {
-  // Carousel for book cards.
   const bookSwiper = new Swiper(".book_swiper", {
     centeredSlides: true,
     slidesPerView: 3,
